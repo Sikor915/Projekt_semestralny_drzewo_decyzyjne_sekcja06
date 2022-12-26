@@ -1,5 +1,5 @@
 // TODO List
-//  1. Czytanie parametrów drzewa decyzyjnego i przechowanie ich. Mo¿na w sumie u¿yæ struktury do tego by pó¿niej by³o ³atwiej z if-ami mo¿e --- Half-done
+//  1. Czytanie parametrów drzewa decyzyjnego i przechowanie ich. Mo¿na w sumie u¿yæ struktury do tego by pó¿niej by³o ³atwiej z if-ami mo¿e --- DONE
 // 
 //  2. Porównywanie wartoœci do drzewa decyzyjnego
 // 
@@ -12,131 +12,138 @@
 //  6. Have fun
 
 #include <iostream>
-#include <ctime>
 #include <sstream>
 #include <fstream>
 #include <vector>
 #include <map>
 #include <string>
+#include <cctype>
 
 int main()
 {
 
     struct PunktDrzewaDecyzyjnego
     {
-        std::string rzeczDoTestu; // Wartoœæ do testu np. wzrost albo wysokoœæ skoku
+        std::string atrybut; // Wartoœæ do testu np. wzrost albo wysokoœæ skoku
         std::string znakTestu; // Znak wykonywanego testu ( '<', '>', '='). Do wykorzystania z jakimœ switch-case
         double wymaganie{}; // Test
         int indeks{}; // Indeks nastêpnego punktu drzewa decyzyjnego
         std::string klasyfikacja; // Klasyfikacja je¿eli test siê powiedzie (ex.: je¿eli wzrost < 190 cm to klasyfikacj¹ bêdzie "Koszykówka"
+        std::string klasyfikacjaOstateczna; // Klasyfikacja przy koñcu drzewa
     };
     std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;
 
-    /*srand(time(NULL));
-    std::ofstream plik ("plik.txt");
-    if (plik.is_open())
-    {
-        int rozmiar = rand() % 10;
-        for (int i = 0; i < rozmiar; i++)
-        {
-            plik << rand() % 100 - 50 << std::endl;
-        }
-        plik.close();
-    }
-
-    std::ifstream plik_z_liczbami("plik.txt");
-    int liczba;
-
-    while (plik_z_liczbami >> liczba)
-    {
-        std::cout << liczba << std::endl;
-    }*/ // To wy¿ej to test jak dzia³a wywo³ywanie funkcji z Developer PowerShell
-
-
     std::ifstream plikWejsciowy("plikWejsciowy.txt");
 
-    std::vector<std::vector<double>> wartosci;
+    std::vector<double> wzrost;
+    std::vector<double> wyskok;
 
     if (plikWejsciowy.is_open())
     {
         std::string linia;
-        while (plikWejsciowy >> linia) 
-        {
+        while (std::getline(plikWejsciowy, linia)) {
             std::stringstream ss(linia);
-            std::vector<double> wiersz;
-            double wartosc;
-            while (ss >> wartosc) 
+            double wartosc1, wartosc2;
+            ss >> wartosc1 >> wartosc2;
+            if (!ss.fail())
             {
-                //if (ss.fail()) // Pomijane s¹ rzeczy które nie s¹ zmiennymi typu double
-                //{
-                //    ss.clear();
-                //    std::string kosz;
-                //    ss >> kosz;
-                //    continue;
-                //}
-
-                //To wy¿ej jest tak w sumie nie potrzebne ale zostawiam na wszelki wypadek, mo¿e to jeszcze wykorzystam
-                wiersz.push_back(wartosc);
+                wzrost.push_back(wartosc1);
+                wyskok.push_back(wartosc2);
             }
-            wartosci.push_back(wiersz);
         }
+
         plikWejsciowy.close();
     }
 
     std::ifstream wejscie("DrzewoDecyzyjne.txt");
 
     PunktDrzewaDecyzyjnego Punkt;
-    int indeks;
+    int indeks{}, indeksMaksymalny{};
 
     if (wejscie.is_open())
     {
-        std::string slowo;
-        while (std::getline(wejscie, slowo)) 
+        std::string linia;
+
+        while (std::getline(wejscie, linia))
+        {
+            std::stringstream ss(linia);
+            ss >> indeksMaksymalny;
+        }
+
+        wejscie.close();
+    }
+
+    std::ifstream wejscie2("DrzewoDecyzyjne.txt");
+
+    if (wejscie2.is_open())
+    {
+        std::string linia;
+
+        while (std::getline(wejscie2, linia))
         {
             // Dopóki mo¿na wczytaæ coœ z pliku Drzewa do s³owa
             static std::string kosz{};
             static std::string znakTestu{};
-            std::stringstream ss(slowo);
+            std::stringstream ss(linia);
             ss >> indeks;
-            std::getline(ss, kosz, ' ');
-            std::string RzeczDoTestu;
-            std::getline(ss, RzeczDoTestu, ' ');
-            std::getline(ss, znakTestu, ' ');
-            double Test;
-            ss >> Test;
-            std::getline(ss, kosz, ' ');
-            int kolejnyIndeks;
-            ss >> kolejnyIndeks;
-            std::getline(ss, kosz, ' ');
-            std::string Klasyfikacja;
-            std::getline(ss, Klasyfikacja, ' ');
+            if (indeks != indeksMaksymalny)
+            {
+                std::getline(ss, kosz, ' ');
+                std::string RzeczDoTestu;
+                std::getline(ss, RzeczDoTestu, ' ');
+                std::getline(ss, znakTestu, ' ');
+                double Test;
+                ss >> Test;
+                std::getline(ss, kosz, ' ');
+                int kolejnyIndeks;
+                ss >> kolejnyIndeks;
+                std::getline(ss, kosz, ' ');
+                std::string Klasyfikacja;
+                std::getline(ss, Klasyfikacja, ' ');
 
-            // Dodanie nowego punktu drzewa i zapisanie tego do mapy z indeksem = "indeks"
-            PunktDrzewaDecyzyjnego Punkt{ RzeczDoTestu, znakTestu, Test ,kolejnyIndeks, Klasyfikacja };
-            DrzewoDecyzyjne[indeks] = Punkt;
+                // Dodanie nowego punktu drzewa i zapisanie tego do mapy z indeksem = "indeks"
+                PunktDrzewaDecyzyjnego Punkt{ RzeczDoTestu, znakTestu, Test ,kolejnyIndeks, Klasyfikacja };
+                DrzewoDecyzyjne[indeks] = Punkt;
+            }
+            else
+            {
+                std::getline(ss, kosz, ' ');
+                std::string RzeczDoTestu;
+                std::getline(ss, RzeczDoTestu, ' ');
+                std::getline(ss, znakTestu, ' ');
+                double Test;
+                ss >> Test;
+                std::getline(ss, kosz, ' ');
+                std::string KlasyfikacjaNie;
+                std::string Klasyfikacja;
+                std::getline(ss, KlasyfikacjaNie, ' ');
+                std::getline(ss, Klasyfikacja, ' ');
+                PunktDrzewaDecyzyjnego Punkt{ RzeczDoTestu, znakTestu, Test , 0, KlasyfikacjaNie, Klasyfikacja };
+                DrzewoDecyzyjne[indeks] = Punkt;
+            }
 
         }
-        wejscie.close();
+        wejscie2.close();
     }
 
 
     //Tu jest tylko wypisanie wektora wartoœci
 
-    for (const auto& wiersz : wartosci) 
+    for (const auto& wiersz : wzrost) 
     {
         static int licznik{ 0 };
-        for (const auto& wartosc : wiersz) 
-        {
-            std::cout.width(5);
-            std::cout << wartosc << " ";
-            licznik++;
-            if (licznik % 2 == 0)
-            {
-                std::cout << std::endl;
-            }
-        }
+        std::cout << wiersz << " ";
         
     }
+    std::cout << std::endl;
+    for (const auto& wiersz : wyskok)
+    {
+        std::cout << wiersz << " ";
+    }
+
+
+
+
 
 }
 

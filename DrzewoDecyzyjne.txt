@@ -1,2 +1,2 @@
-0 height < 190.0 1 basketball % root
-1 jump > 50.0 basketball athletics
+0 wzrost < 190.0 1 koszykówka % root
+1 wyskok > 50.0 koszykówka atletyka
