@@ -1,5 +1,5 @@
 // TODO List
-//  1. Czytanie parametrów drzewa decyzyjnego i przechowanie ich. Mo¿na w sumie u¿yæ struktury do tego by pó¿niej by³o ³atwiej z if-ami mo¿e
+//  1. Czytanie parametrów drzewa decyzyjnego i przechowanie ich. Mo¿na w sumie u¿yæ struktury do tego by pó¿niej by³o ³atwiej z if-ami mo¿e --- Half-done
 // 
 //  2. Porównywanie wartoœci do drzewa decyzyjnego
 // 
@@ -16,9 +16,22 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
+#include <map>
+#include <string>
 
 int main()
 {
+
+    struct PunktDrzewaDecyzyjnego
+    {
+        std::string rzeczDoTestu; // Wartoœæ do testu np. wzrost albo wysokoœæ skoku
+        std::string znakTestu; // Znak wykonywanego testu ( '<', '>', '='). Do wykorzystania z jakimœ switch-case
+        double wymaganie{}; // Test
+        int indeks{}; // Indeks nastêpnego punktu drzewa decyzyjnego
+        std::string klasyfikacja; // Klasyfikacja je¿eli test siê powiedzie (ex.: je¿eli wzrost < 190 cm to klasyfikacj¹ bêdzie "Koszykówka"
+    };
+    std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;
+
     /*srand(time(NULL));
     std::ofstream plik ("plik.txt");
     if (plik.is_open())
@@ -37,9 +50,8 @@ int main()
     while (plik_z_liczbami >> liczba)
     {
         std::cout << liczba << std::endl;
-    }*/
+    }*/ // To wy¿ej to test jak dzia³a wywo³ywanie funkcji z Developer PowerShell
 
-    // To wy¿ej to test jak dzia³a wywo³ywanie funkcji z Developer PowerShell
 
     std::ifstream plikWejsciowy("plikWejsciowy.txt");
 
@@ -70,6 +82,46 @@ int main()
         }
         plikWejsciowy.close();
     }
+
+    std::ifstream wejscie("DrzewoDecyzyjne.txt");
+
+    PunktDrzewaDecyzyjnego Punkt;
+    int indeks;
+
+    if (wejscie.is_open())
+    {
+        std::string slowo;
+        while (std::getline(wejscie, slowo)) 
+        {
+            // Dopóki mo¿na wczytaæ coœ z pliku Drzewa do s³owa
+            static std::string kosz{};
+            static std::string znakTestu{};
+            std::stringstream ss(slowo);
+            ss >> indeks;
+            std::getline(ss, kosz, ' ');
+            std::string RzeczDoTestu;
+            std::getline(ss, RzeczDoTestu, ' ');
+            std::getline(ss, znakTestu, ' ');
+            double Test;
+            ss >> Test;
+            std::getline(ss, kosz, ' ');
+            int kolejnyIndeks;
+            ss >> kolejnyIndeks;
+            std::getline(ss, kosz, ' ');
+            std::string Klasyfikacja;
+            std::getline(ss, Klasyfikacja, ' ');
+
+            // Dodanie nowego punktu drzewa i zapisanie tego do mapy z indeksem = "indeks"
+            PunktDrzewaDecyzyjnego Punkt{ RzeczDoTestu, znakTestu, Test ,kolejnyIndeks, Klasyfikacja };
+            DrzewoDecyzyjne[indeks] = Punkt;
+
+        }
+        wejscie.close();
+    }
+
+
+    //Tu jest tylko wypisanie wektora wartoœci
+
     for (const auto& wiersz : wartosci) 
     {
         static int licznik{ 0 };
