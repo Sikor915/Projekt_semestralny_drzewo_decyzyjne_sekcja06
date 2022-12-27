@@ -1,7 +1,7 @@
 // TODO List
 //  1. Czytanie parametrów drzewa decyzyjnego i przechowanie ich. Mo¿na w sumie u¿yæ struktury do tego by pó¿niej by³o ³atwiej z if-ami mo¿e --- DONE
 // 
-//  2. Porównywanie wartoœci do drzewa decyzyjnego
+//  2. Porównywanie wartoœci do drzewa decyzyjnego - tu by w sumie przyda³o siê to parami sprawdzaæ (tzn. wyskok[0] i wzrost[0]) --- DONE (gównianie ale jest)
 // 
 //  3. Opracowaæ jak wywo³aæ ten program z konsoli i wraz z podaniem parametrów (plików tekstowych) - ja u¿ywa³em cl /EHsc Projekt_semestralny_drzewo_decyzyjne.cpp i potem .\Projekt_semestralny(...)
 // 
@@ -17,26 +17,27 @@
 #include <vector>
 #include <map>
 #include <string>
-#include <cctype>
 
 int main()
 {
 
     struct PunktDrzewaDecyzyjnego
     {
-        std::string atrybut; // Wartoœæ do testu np. wzrost albo wysokoœæ skoku
-        std::string znakTestu; // Znak wykonywanego testu ( '<', '>', '='). Do wykorzystania z jakimœ switch-case
-        double wymaganie{}; // Test
+        std::string atrybut; // Jaki atrybut testowaæ np. wzrost albo wysokoœæ skoku
+        std::string znakTestu; // Znak wykonywanego testu ( '<', '>'). Do wykorzystania z jakimœ switch-case
+        double wymaganie{}; // Wartoœæ do której bêdziemy przyrównywaæ
         int indeks{}; // Indeks nastêpnego punktu drzewa decyzyjnego
-        std::string klasyfikacja; // Klasyfikacja je¿eli test siê powiedzie (ex.: je¿eli wzrost < 190 cm to klasyfikacj¹ bêdzie "Koszykówka"
+        std::string klasyfikacja; // Klasyfikacja je¿eli test siê powiedzie (ex.: je¿eli wzrost < 190 cm to klasyfikacj¹ bêdzie "Koszykówka")
         std::string klasyfikacjaOstateczna; // Klasyfikacja przy koñcu drzewa
     };
+    //      <jakie s¹ indeksy, jaka zmienna jest przechowywana>
     std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;
 
     std::ifstream plikWejsciowy("plikWejsciowy.txt");
 
     std::vector<double> wzrost;
     std::vector<double> wyskok;
+    std::vector<double> koszykowka, lekkoatletyka;
 
     if (plikWejsciowy.is_open())
     {
@@ -58,7 +59,7 @@ int main()
     std::ifstream wejscie("DrzewoDecyzyjne.txt");
 
     PunktDrzewaDecyzyjnego Punkt;
-    int indeks{}, indeksMaksymalny{};
+    int indeks{}, indeksMaksymalny{}, indeksTestowanych{};
 
     if (wejscie.is_open())
     {
@@ -71,7 +72,8 @@ int main()
         }
 
         wejscie.close();
-    }
+    } 
+    // tu zczytuje indeks maksymalny drzewa decyzyjnego
 
     std::ifstream wejscie2("DrzewoDecyzyjne.txt");
 
@@ -118,32 +120,221 @@ int main()
                 std::string Klasyfikacja;
                 std::getline(ss, KlasyfikacjaNie, ' ');
                 std::getline(ss, Klasyfikacja, ' ');
-                PunktDrzewaDecyzyjnego Punkt{ RzeczDoTestu, znakTestu, Test , 0, KlasyfikacjaNie, Klasyfikacja };
+                PunktDrzewaDecyzyjnego Punkt{ RzeczDoTestu, znakTestu, Test , 0, Klasyfikacja, KlasyfikacjaNie };
                 DrzewoDecyzyjne[indeks] = Punkt;
             }
 
         }
         wejscie2.close();
+        indeks = 0;
     }
+    // Tu zczytuje samo drzewo decyzyjne
 
+    // ---------------------------------------------------
 
-    //Tu jest tylko wypisanie wektora wartoœci
-
-    for (const auto& wiersz : wzrost) 
+    for (double wartosc : wzrost)
     {
-        static int licznik{ 0 };
-        std::cout << wiersz << " ";
-        
+        while (indeks <= indeksMaksymalny)
+        {
+            if (DrzewoDecyzyjne[indeks].atrybut == "wzrost")
+            {
+
+                if (DrzewoDecyzyjne[indeks].znakTestu == "<")
+                {
+                    if (wzrost[indeksTestowanych] < DrzewoDecyzyjne[indeks].wymaganie)
+                    {
+                        if (DrzewoDecyzyjne[indeks].klasyfikacja == "koszykowka")
+                        {
+                            koszykowka.push_back(wzrost.at(indeksTestowanych));
+                            koszykowka.push_back(wyskok.at(indeksTestowanych));
+                            indeksTestowanych++;
+                            indeks = 2;
+                        }
+                        else
+                        {
+                            lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+                            lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+                            indeksTestowanych++;
+                            indeks = 2;
+                        }
+                    }
+                    else
+                    {
+                        if (indeks == indeksMaksymalny)
+                        {
+                            if (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == "lekkoatletyka")
+                            {
+                                lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+                                lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+                                indeksTestowanych++;
+                                indeks++;
+                            }
+                            else
+                            {
+                                koszykowka.push_back(wzrost.at(indeksTestowanych));
+                                koszykowka.push_back(wyskok.at(indeksTestowanych));
+                                indeksTestowanych++;
+                                indeks++;
+                            }
+
+                        }
+                        else
+                        {
+                            indeks++;
+                        }
+                    }
+                }
+                else
+                {
+                    if (wzrost[indeksTestowanych] > DrzewoDecyzyjne[indeks].wymaganie)
+                    {
+                        if (DrzewoDecyzyjne[indeks].klasyfikacja == "koszykowka")
+                        {
+                            koszykowka.push_back(wzrost.at(indeksTestowanych));
+                            koszykowka.push_back(wyskok.at(indeksTestowanych));
+                            indeksTestowanych++;
+                            indeks = 2;
+                        }
+                        else
+                        {
+                            lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+                            lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+                            indeksTestowanych++;
+                            indeks = 2;
+                        }
+                    }
+                    else
+                    {
+                        if (indeks == indeksMaksymalny)
+                        {
+                            if (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == "lekkoatletyka")
+                            {
+                                lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+                                lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+                                indeksTestowanych++;
+                                indeks++;
+                            }
+                            else
+                            {
+                                koszykowka.push_back(wzrost.at(indeksTestowanych));
+                                koszykowka.push_back(wyskok.at(indeksTestowanych));
+                                indeksTestowanych++;
+                                indeks++;
+                            }
+                        }
+                        else
+                        {
+                            indeks++;
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                if (DrzewoDecyzyjne[indeks].znakTestu == "<")
+                {
+                    if (wyskok[indeksTestowanych] < DrzewoDecyzyjne[indeks].wymaganie)
+                    {
+                        if (DrzewoDecyzyjne[indeks].klasyfikacja == "koszykowka")
+                        {
+                            koszykowka.push_back(wzrost.at(indeksTestowanych));
+                            koszykowka.push_back(wyskok.at(indeksTestowanych));
+                            indeksTestowanych++;
+                            indeks = 2;
+                        }
+                        else
+                        {
+                            lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+                            lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+                            indeksTestowanych++;
+                            indeks = 2;
+                        }
+                    }
+                    else
+                    {
+                        if (indeks == indeksMaksymalny)
+                        {
+                            if (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == "lekkoatletyka")
+                            {
+                                lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+                                lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+                                indeksTestowanych++;
+                                indeks++;
+                            }
+                            else
+                            {
+                                koszykowka.push_back(wzrost.at(indeksTestowanych));
+                                koszykowka.push_back(wyskok.at(indeksTestowanych));
+                                indeksTestowanych++;
+                                indeks++;
+                            }
+                        }
+                        else
+                        {
+                            indeks++;
+                        }
+                    }
+                }
+                else
+                {
+                    if (wyskok[indeksTestowanych] > DrzewoDecyzyjne[indeks].wymaganie)
+                    {
+                        if (DrzewoDecyzyjne[indeks].klasyfikacja == "koszykowka")
+                        {
+                            koszykowka.push_back(wzrost.at(indeksTestowanych));
+                            koszykowka.push_back(wyskok.at(indeksTestowanych));
+                            indeksTestowanych++;
+                            indeks = 2;
+                        }
+                        else
+                        {
+                            lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+                            lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+                            indeksTestowanych++;
+                            indeks = 2;
+                        }
+                    }
+                    else
+                    {
+                        if (indeks == indeksMaksymalny)
+                        {
+                            if (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == "lekkoatletyka")
+                            {
+                                lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+                                lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+                                indeksTestowanych++;
+                                indeks++;
+                            }
+                            else
+                            {
+                                koszykowka.push_back(wzrost.at(indeksTestowanych));
+                                koszykowka.push_back(wyskok.at(indeksTestowanych));
+                                indeksTestowanych++;
+                                indeks++;
+                            }
+                        }
+                        else
+                        {
+                            indeks++;
+                        }
+                    }
+                }
+            }
+        }
+        indeks = 0;
     }
-    std::cout << std::endl;
-    for (const auto& wiersz : wyskok)
+
+    for (const auto& p : koszykowka)
     {
-        std::cout << wiersz << " ";
+        static int licznik{};
+        std::cout << p << " ";
+        licznik++;
+        if (licznik % 2 == 0)
+        {
+            std::cout << std::endl;
+        }
     }
-
-
-
-
 
 }
 
