@@ -5,7 +5,7 @@
 // 
 //  3. Opracowaæ jak wywo³aæ ten program z konsoli i wraz z podaniem parametrów (plików tekstowych) - ja u¿ywa³em cl /EHsc Projekt_semestralny_drzewo_decyzyjne.cpp i potem .\Projekt_semestralny(...)
 // 
-//  4. Opracowaæ ¿eby program podawa³ instrukcje co jak zrobiæ gdy u¿ytkownik nie poda plików wejœciowych a tak¿e mo¿e niech poda lokalizacjê gdzie zapisa³ plik tekstowy z wynikiem
+//  4. Opracowaæ ¿eby program podawa³ instrukcje co jak zrobiæ gdy u¿ytkownik nie poda plików wejœciowych a tak¿e mo¿e niech poda lokalizacjê gdzie zapisa³ plik tekstowy z wynikiem --- Zrobiony zapis do pliku
 //
 //  5. Opisaæ wszystko z pomoc¹ Doxygena - ogarn¹æ w ogóle jak siê to coœ robi
 // 
@@ -333,6 +333,39 @@ int main()
         if (licznik % 2 == 0)
         {
             std::cout << std::endl;
+        }
+    }
+
+
+    std::ofstream plikWyjsciowy;
+    plikWyjsciowy.open("plikWyjsciowy.txt");
+
+    if (plikWyjsciowy.is_open())
+    {
+        plikWyjsciowy << "Koszykowka" << std::endl;
+        int licznik{};
+
+        for (double& liczba : koszykowka )
+        {
+            plikWyjsciowy << liczba << " ";
+            licznik++;
+            if (licznik % 2 == 0)
+            {
+                plikWyjsciowy << std::endl;
+            }
+        }
+
+        plikWyjsciowy << std::endl;
+        plikWyjsciowy << "Lekkoatletyka" << std::endl;
+
+        for (double& liczba : lekkoatletyka)
+        {
+            plikWyjsciowy << liczba << " ";
+            licznik++;
+            if (licznik % 2 == 0)
+            {
+                plikWyjsciowy << std::endl;
+            }
         }
     }
 
