@@ -1,15 +1,20 @@
-// TODO List
-//  1. Czytanie parametrów drzewa decyzyjnego i przechowanie ich. Mo¿na w sumie u¿yæ struktury do tego by pó¿niej by³o ³atwiej z if-ami mo¿e --- DONE
-// 
-//  2. Porównywanie wartoœci do drzewa decyzyjnego - tu by w sumie przyda³o siê to parami sprawdzaæ (tzn. wyskok[0] i wzrost[0]) --- DONE (gównianie ale jest)
-// 
-//  3. Opracowaæ jak wywo³aæ ten program z konsoli i wraz z podaniem parametrów (plików tekstowych) - ja u¿ywa³em cl /EHsc Projekt_semestralny_drzewo_decyzyjne.cpp i potem .\Projekt_semestralny(...) --- Half-Done
-// 
-//  4. Opracowaæ ¿eby program podawa³ instrukcje co jak zrobiæ gdy u¿ytkownik nie poda plików wejœciowych a tak¿e mo¿e niech poda lokalizacjê gdzie zapisa³ plik tekstowy z wynikiem --- DONE
-//
-//  5. Opisaæ wszystko z pomoc¹ Doxygena - ogarn¹æ w ogóle jak siê to coœ robi --- DONE
-// 
-//  6. Have fun
+/** Program przyporzadkowuje osoby o danych atrybutach wzrostu i wyskoku do poszczegolnych dyscyplin sportowych (koszykowka albo lekkoatletyka)
+ *  @date 2023-01-05
+ *  @author Kacper Sikorski, student Politechniki Slaskiej na I roku Informatyki
+ * 
+ *  @todo Czytanie parametrow drzewa decyzyjnego i przechowanie ich. Mozna w sumie uzyc struktury do tego by pozniej bylo latwiej z if-ami moze --- DONE
+ *  
+ *  @todo Porownywanie wartosci do drzewa decyzyjnego - tu by w sumie przydalo sie to parami sprawdzac (tzn. wyskok[0] i wzrost[0]) --- DONE (gownianie ale jest)
+ *
+ *  @todo Opracowac jak wywolac ten program z konsoli i wraz z podaniem parametrow (plikow tekstowych) - ja uzywalem cl /EHsc Projekt_semestralny_drzewo_decyzyjne.cpp i potem .\Projekt_semestralny(...) --- Half-Done
+ * 
+ *  @todo Opracowac zeby program podawal instrukcje co jak zrobic gdy uzytkownik nie poda plikow wejsciowych a takze moze niech poda lokalizacje gdzie zapisal plik tekstowy z wynikiem --- DONE
+ *
+ *  @todo Opisac wszystko z pomoca Doxygena - ogarnac w ogole jak sie to cos robi --- DONE
+ * 
+ *  @todo Have fun :)
+ *
+ */
 
 #include <iostream>
 #include <sstream>
