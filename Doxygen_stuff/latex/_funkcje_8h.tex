@@ -1,0 +1,58 @@
+\hypertarget{_funkcje_8h}{}\doxysection{Funkcje.\+h File Reference}
+\label{_funkcje_8h}\index{Funkcje.h@{Funkcje.h}}
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_punkt_drzewa_decyzyjnego}{Punkt\+Drzewa\+Decyzyjnego}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_funkcje_8h_a444a0a2bf4afcc8ff7ced3fda3684cb4}{pobierz\+Dane}} (std\+::string nazwa\+Pliku, std\+::vector$<$ double $>$ \&wzrost, std\+::vector$<$ double $>$ \&wyskok)
+\item 
+void \mbox{\hyperlink{_funkcje_8h_ab31c1b202f5e4d84e3240a056c2a2657}{pobierz\+Indeks}} (std\+::string nazwa\+Pliku, int indeks, int \&indeks\+Maksymalny)
+\item 
+void \mbox{\hyperlink{_funkcje_8h_ae0b304b461114d113b8e6a66c0751fec}{pobierz\+Drzewo}} (std\+::string nazwa\+Pliku, std\+::map$<$ int, \mbox{\hyperlink{struct_punkt_drzewa_decyzyjnego}{Punkt\+Drzewa\+Decyzyjnego}} $>$ \&Drzewo)
+\item 
+void \mbox{\hyperlink{_funkcje_8h_a27997a4f7c7c783ba2092ca0bc4faeae}{porownaj}} (std\+::vector$<$ double $>$ \&wzrost, std\+::vector$<$ double $>$ \&wyskok, int indeks, int \&indeks\+Max, std\+::vector$<$ double $>$ \&koszykowka, std\+::vector$<$ double $>$ \&lekkoatletyka, std\+::map$<$ int, \mbox{\hyperlink{struct_punkt_drzewa_decyzyjnego}{Punkt\+Drzewa\+Decyzyjnego}} $>$ \&drzewo)
+\item 
+void \mbox{\hyperlink{_funkcje_8h_aa6faa3b1689968818d866a1ba0e78617}{zapisz\+Do\+Pliku}} (std\+::vector$<$ double $>$ \&koszykowka, std\+::vector$<$ double $>$ \&lekkoatletyka)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_funkcje_8h_a444a0a2bf4afcc8ff7ced3fda3684cb4}\label{_funkcje_8h_a444a0a2bf4afcc8ff7ced3fda3684cb4}} 
+\index{Funkcje.h@{Funkcje.h}!pobierzDane@{pobierzDane}}
+\index{pobierzDane@{pobierzDane}!Funkcje.h@{Funkcje.h}}
+\doxysubsubsection{\texorpdfstring{pobierzDane()}{pobierzDane()}}
+{\footnotesize\ttfamily void pobierz\+Dane (\begin{DoxyParamCaption}\item[{std\+::string}]{nazwa\+Pliku,  }\item[{std\+::vector$<$ double $>$ \&}]{wzrost,  }\item[{std\+::vector$<$ double $>$ \&}]{wyskok }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_funkcje_8h_ae0b304b461114d113b8e6a66c0751fec}\label{_funkcje_8h_ae0b304b461114d113b8e6a66c0751fec}} 
+\index{Funkcje.h@{Funkcje.h}!pobierzDrzewo@{pobierzDrzewo}}
+\index{pobierzDrzewo@{pobierzDrzewo}!Funkcje.h@{Funkcje.h}}
+\doxysubsubsection{\texorpdfstring{pobierzDrzewo()}{pobierzDrzewo()}}
+{\footnotesize\ttfamily void pobierz\+Drzewo (\begin{DoxyParamCaption}\item[{std\+::string}]{nazwa\+Pliku,  }\item[{std\+::map$<$ int, \mbox{\hyperlink{struct_punkt_drzewa_decyzyjnego}{Punkt\+Drzewa\+Decyzyjnego}} $>$ \&}]{Drzewo }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_funkcje_8h_ab31c1b202f5e4d84e3240a056c2a2657}\label{_funkcje_8h_ab31c1b202f5e4d84e3240a056c2a2657}} 
+\index{Funkcje.h@{Funkcje.h}!pobierzIndeks@{pobierzIndeks}}
+\index{pobierzIndeks@{pobierzIndeks}!Funkcje.h@{Funkcje.h}}
+\doxysubsubsection{\texorpdfstring{pobierzIndeks()}{pobierzIndeks()}}
+{\footnotesize\ttfamily void pobierz\+Indeks (\begin{DoxyParamCaption}\item[{std\+::string}]{nazwa\+Pliku,  }\item[{int}]{indeks,  }\item[{int \&}]{indeks\+Maksymalny }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_funkcje_8h_a27997a4f7c7c783ba2092ca0bc4faeae}\label{_funkcje_8h_a27997a4f7c7c783ba2092ca0bc4faeae}} 
+\index{Funkcje.h@{Funkcje.h}!porownaj@{porownaj}}
+\index{porownaj@{porownaj}!Funkcje.h@{Funkcje.h}}
+\doxysubsubsection{\texorpdfstring{porownaj()}{porownaj()}}
+{\footnotesize\ttfamily void porownaj (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{wzrost,  }\item[{std\+::vector$<$ double $>$ \&}]{wyskok,  }\item[{int}]{indeks,  }\item[{int \&}]{indeks\+Max,  }\item[{std\+::vector$<$ double $>$ \&}]{koszykowka,  }\item[{std\+::vector$<$ double $>$ \&}]{lekkoatletyka,  }\item[{std\+::map$<$ int, \mbox{\hyperlink{struct_punkt_drzewa_decyzyjnego}{Punkt\+Drzewa\+Decyzyjnego}} $>$ \&}]{drzewo }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_funkcje_8h_aa6faa3b1689968818d866a1ba0e78617}\label{_funkcje_8h_aa6faa3b1689968818d866a1ba0e78617}} 
+\index{Funkcje.h@{Funkcje.h}!zapiszDoPliku@{zapiszDoPliku}}
+\index{zapiszDoPliku@{zapiszDoPliku}!Funkcje.h@{Funkcje.h}}
+\doxysubsubsection{\texorpdfstring{zapiszDoPliku()}{zapiszDoPliku()}}
+{\footnotesize\ttfamily void zapisz\+Do\+Pliku (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{koszykowka,  }\item[{std\+::vector$<$ double $>$ \&}]{lekkoatletyka }\end{DoxyParamCaption})}
+

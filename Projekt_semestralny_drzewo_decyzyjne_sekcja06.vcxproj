@@ -127,7 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="funkcje.cpp" />
     <ClCompile Include="Projekt_semestralny_drzewo_decyzyjne_sekcja06.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Funkcje.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

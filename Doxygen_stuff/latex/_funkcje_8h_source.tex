@@ -1,0 +1,37 @@
+\hypertarget{_funkcje_8h_source}{}\doxysection{Funkcje.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef FUNKCJE\_H}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define FUNKCJE\_H}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{22 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_punkt_drzewa_decyzyjnego}{PunktDrzewaDecyzyjnego}}}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24     std::string atrybut; \textcolor{comment}{// Jaki atrybut testowaæ np. wzrost albo wysokoœæ skoku}}
+\DoxyCodeLine{25     std::string znakTestu; \textcolor{comment}{// Znak wykonywanego testu ( '<', '>'). Do wykorzystania z jakimœ switch-\/case}}
+\DoxyCodeLine{26     \textcolor{keywordtype}{double} wymaganie\{\}; \textcolor{comment}{// Wartoœæ do której bêdziemy przyrównywaæ}}
+\DoxyCodeLine{27     \textcolor{keywordtype}{int} indeks\{\}; \textcolor{comment}{// Indeks nastêpnego punktu drzewa decyzyjnego}}
+\DoxyCodeLine{28     std::string klasyfikacja; \textcolor{comment}{// Klasyfikacja je¿eli test siê powiedzie (ex.: je¿eli wzrost < 190 cm to klasyfikacj¹ bêdzie "{}Koszykówka"{})}}
+\DoxyCodeLine{29     std::string klasyfikacjaOstateczna; \textcolor{comment}{// Klasyfikacja przy koñcu drzewa}}
+\DoxyCodeLine{30 \};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{keywordtype}{void} pobierzDane(std::string nazwaPliku, std::vector<double>\& wzrost, std::vector<double>\& wyskok);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keywordtype}{void} pobierzIndeks(std::string nazwaPliku, \textcolor{keywordtype}{int} indeks, \textcolor{keywordtype}{int}\& indeksMaksymalny);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{keywordtype}{void} pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>\& Drzewo);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keywordtype}{void} porownaj(std::vector<double>\& wzrost, std::vector<double>\& wyskok, \textcolor{keywordtype}{int} indeks, \textcolor{keywordtype}{int}\& indeksMax, std::vector<double>\& koszykowka, std::vector<double>\& lekkoatletyka, std::map<int, PunktDrzewaDecyzyjnego>\& drzewo);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{keywordtype}{void} zapiszDoPliku(std::vector<double>\& koszykowka, std::vector<double>\& lekkoatletyka);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
