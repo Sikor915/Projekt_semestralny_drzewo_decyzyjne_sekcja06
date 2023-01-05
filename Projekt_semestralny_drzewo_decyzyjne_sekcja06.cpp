@@ -1,5 +1,3 @@
-/** @File **/
-
 // TODO List
 //  1. Czytanie parametrów drzewa decyzyjnego i przechowanie ich. Mo¿na w sumie u¿yæ struktury do tego by pó¿niej by³o ³atwiej z if-ami mo¿e --- DONE
 // 
@@ -9,7 +7,7 @@
 // 
 //  4. Opracowaæ ¿eby program podawa³ instrukcje co jak zrobiæ gdy u¿ytkownik nie poda plików wejœciowych a tak¿e mo¿e niech poda lokalizacjê gdzie zapisa³ plik tekstowy z wynikiem --- DONE
 //
-//  5. Opisaæ wszystko z pomoc¹ Doxygena - ogarn¹æ w ogóle jak siê to coœ robi --- Half-Done
+//  5. Opisaæ wszystko z pomoc¹ Doxygena - ogarn¹æ w ogóle jak siê to coœ robi --- DONE
 // 
 //  6. Have fun
 
@@ -25,9 +23,6 @@ int main()
 {
     std::string nazwaPlikuWejsciowego, nazwaPlikuDrzewa;
 
-    //      <jakie s¹ indeksy, jaka zmienna jest przechowywana>
-    std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;
-
     std::cout << "Program obsluguje i bada przynaleznosc zawodnikow o specyficznych parametrach do poszczegolnych dyscyplin (koszykowka i lekkoatletyka)." << std::endl;
     std::cout << "Prosze podanie nazwy pliku z danymi razem z rozszerzeniem .txt a potem nazwy pliku drzewa decyzyjnego takze z rozszerzeniem .txt" << std::endl;
     std::cout << "Prosze sie upewnic ze pliki sa odpowiednio przygotowane tzn. plik z danymi posiada dwie kolumny wzrost i wysokosc (w tej kolejnosci) a drzewo jest opisane w ten sposob" << std::endl;
@@ -41,7 +36,8 @@ int main()
     }
     else
     {
-
+        //      <jakie s¹ indeksy, jaka zmienna jest przechowywana>
+        std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;
         std::vector<double> wzrost;
         std::vector<double> wyskok;
         std::vector<double> koszykowka, lekkoatletyka;

@@ -1,4 +1,4 @@
-\hypertarget{funkcje_8cpp}{}\doxysection{funkcje.\+cpp File Reference}
+\doxysection{funkcje.\+cpp File Reference}
 \label{funkcje_8cpp}\index{funkcje.cpp@{funkcje.cpp}}
 {\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$sstream$>$}\newline
@@ -6,3 +6,97 @@
 {\ttfamily \#include $<$fstream$>$}\newline
 {\ttfamily \#include $<$map$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}Funkcje.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ pobierz\+Dane} (std\+::string nazwa\+Pliku, std\+::vector$<$ double $>$ \&wzrost, std\+::vector$<$ double $>$ \&wyskok)
+\item 
+void \textbf{ pobierz\+Indeks} (std\+::string nazwa\+Pliku, int \&indeks\+Maksymalny)
+\item 
+void \textbf{ pobierz\+Drzewo} (std\+::string nazwa\+Pliku, std\+::map$<$ int, \textbf{ Punkt\+Drzewa\+Decyzyjnego} $>$ \&drzewo, int \&indeks\+Maksymalny)
+\item 
+void \textbf{ porownaj} (std\+::vector$<$ double $>$ \&wzrost, std\+::vector$<$ double $>$ \&wyskok, int \&indeks\+Maksymalny, std\+::vector$<$ double $>$ \&koszykowka, std\+::vector$<$ double $>$ \&lekkoatletyka, std\+::map$<$ int, \textbf{ Punkt\+Drzewa\+Decyzyjnego} $>$ \&Drzewo\+Decyzyjne)
+\item 
+void \textbf{ zapisz\+Do\+Pliku} (std\+::vector$<$ double $>$ \&koszykowka, std\+::vector$<$ double $>$ \&lekkoatletyka)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\label{funkcje_8cpp_a444a0a2bf4afcc8ff7ced3fda3684cb4}} 
+\index{funkcje.cpp@{funkcje.cpp}!pobierzDane@{pobierzDane}}
+\index{pobierzDane@{pobierzDane}!funkcje.cpp@{funkcje.cpp}}
+\doxysubsubsection{pobierzDane()}
+{\footnotesize\ttfamily void pobierz\+Dane (\begin{DoxyParamCaption}\item[{std\+::string}]{nazwa\+Pliku,  }\item[{std\+::vector$<$ double $>$ \&}]{wzrost,  }\item[{std\+::vector$<$ double $>$ \&}]{wyskok }\end{DoxyParamCaption})}
+
+Funkcja pobiera dane z pliku wejsciowego (wzrost i wyskok) 
+\begin{DoxyParams}{Parameters}
+{\em nazwa\+Pliku} & nazwa pliku wyjsciowego (w formacie .txt) \\
+\hline
+{\em wzrost} & referencja na wektor przechowujacy wzrost osob \\
+\hline
+{\em wyskok} & referencja na wektor przechowujacy wyskok osob \\
+\hline
+\end{DoxyParams}
+\mbox{\label{funkcje_8cpp_a670daf8880bc788e437078047b08825b}} 
+\index{funkcje.cpp@{funkcje.cpp}!pobierzDrzewo@{pobierzDrzewo}}
+\index{pobierzDrzewo@{pobierzDrzewo}!funkcje.cpp@{funkcje.cpp}}
+\doxysubsubsection{pobierzDrzewo()}
+{\footnotesize\ttfamily void pobierz\+Drzewo (\begin{DoxyParamCaption}\item[{std\+::string}]{nazwa\+Pliku,  }\item[{std\+::map$<$ int, \textbf{ Punkt\+Drzewa\+Decyzyjnego} $>$ \&}]{drzewo,  }\item[{int \&}]{indeks\+Maksymalny }\end{DoxyParamCaption})}
+
+Funkcja pobiera dane z pliku drzewa i zapisuje je do mapy 
+\begin{DoxyParams}{Parameters}
+{\em nazwa\+Pliku} & nazwa pliku drzewa (w formacie .txt) \\
+\hline
+{\em drzewo} & referencja na mape drzewa decyzyjnego \\
+\hline
+{\em indeks\+Maksymalny} & referencja do maksymalnego indeksu drzewa \\
+\hline
+\end{DoxyParams}
+\mbox{\label{funkcje_8cpp_ade9dd73680a93f0cacaaf7ab5da44529}} 
+\index{funkcje.cpp@{funkcje.cpp}!pobierzIndeks@{pobierzIndeks}}
+\index{pobierzIndeks@{pobierzIndeks}!funkcje.cpp@{funkcje.cpp}}
+\doxysubsubsection{pobierzIndeks()}
+{\footnotesize\ttfamily void pobierz\+Indeks (\begin{DoxyParamCaption}\item[{std\+::string}]{nazwa\+Pliku,  }\item[{int \&}]{indeks\+Maksymalny }\end{DoxyParamCaption})}
+
+Funkcja pobiera indeks maksymalny w pliku z drzewem 
+\begin{DoxyParams}{Parameters}
+{\em nazwa\+Pliku} & nazwa pliku drzewa (w formacie .txt) \\
+\hline
+{\em indeks\+Maksymalny} & referencja do maksymalnego indeku drzewa \\
+\hline
+\end{DoxyParams}
+\mbox{\label{funkcje_8cpp_aaa2269208bd708f970a995364b20dca8}} 
+\index{funkcje.cpp@{funkcje.cpp}!porownaj@{porownaj}}
+\index{porownaj@{porownaj}!funkcje.cpp@{funkcje.cpp}}
+\doxysubsubsection{porownaj()}
+{\footnotesize\ttfamily void porownaj (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{wzrost,  }\item[{std\+::vector$<$ double $>$ \&}]{wyskok,  }\item[{int \&}]{indeks\+Maksymalny,  }\item[{std\+::vector$<$ double $>$ \&}]{koszykowka,  }\item[{std\+::vector$<$ double $>$ \&}]{lekkoatletyka,  }\item[{std\+::map$<$ int, \textbf{ Punkt\+Drzewa\+Decyzyjnego} $>$ \&}]{Drzewo\+Decyzyjne }\end{DoxyParamCaption})}
+
+Funkcja porownuje dane z pliku wejsciowego do drzewa i przypisuje do odpowiednich dyscyplin 
+\begin{DoxyParams}{Parameters}
+{\em wzrost} & referencja na wektor wzrostu \\
+\hline
+{\em wyskok} & referencja na wektor wyskoku \\
+\hline
+{\em indeks\+Maksymalny} & referencja do maksymalnego indeksu drzewa \\
+\hline
+{\em koszykowka} & referencja do wektora przechowywujacego graczy przydzielonych do koszykowki \\
+\hline
+{\em lekkoatletyka} & referencja do wektora przechowywujacego graczy przydzielonych do lekkoatletyki \\
+\hline
+{\em Drzewo\+Decyzyjne} & referencja do mapy drzewa decyzyjnego \\
+\hline
+\end{DoxyParams}
+\mbox{\label{funkcje_8cpp_aa6faa3b1689968818d866a1ba0e78617}} 
+\index{funkcje.cpp@{funkcje.cpp}!zapiszDoPliku@{zapiszDoPliku}}
+\index{zapiszDoPliku@{zapiszDoPliku}!funkcje.cpp@{funkcje.cpp}}
+\doxysubsubsection{zapiszDoPliku()}
+{\footnotesize\ttfamily void zapisz\+Do\+Pliku (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{koszykowka,  }\item[{std\+::vector$<$ double $>$ \&}]{lekkoatletyka }\end{DoxyParamCaption})}
+
+Funkcja zapisuje wektory z graczami koszykowki i lekkoatletyki do pliku wyjsciowego 
+\begin{DoxyParams}{Parameters}
+{\em koszykowka} & referencja do wektora z graczami koszykowki \\
+\hline
+{\em lekkoatletyka} & referencja do wektora z graczami lekkoatletyki \\
+\hline
+\end{DoxyParams}

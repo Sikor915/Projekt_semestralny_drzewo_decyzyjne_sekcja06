@@ -1,58 +1,101 @@
-\hypertarget{_funkcje_8h}{}\doxysection{Funkcje.\+h File Reference}
+\doxysection{Funkcje.\+h File Reference}
 \label{_funkcje_8h}\index{Funkcje.h@{Funkcje.h}}
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include $<$fstream$>$}\newline
 {\ttfamily \#include $<$sstream$>$}\newline
 {\ttfamily \#include $<$map$>$}\newline
-\doxysubsection*{Classes}
-\begin{DoxyCompactItemize}
-\item 
-struct \mbox{\hyperlink{struct_punkt_drzewa_decyzyjnego}{Punkt\+Drzewa\+Decyzyjnego}}
-\end{DoxyCompactItemize}
+{\ttfamily \#include \char`\"{}Struktura.\+h\char`\"{}}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{_funkcje_8h_a444a0a2bf4afcc8ff7ced3fda3684cb4}{pobierz\+Dane}} (std\+::string nazwa\+Pliku, std\+::vector$<$ double $>$ \&wzrost, std\+::vector$<$ double $>$ \&wyskok)
+void \textbf{ pobierz\+Dane} (std\+::string nazwa\+Pliku, std\+::vector$<$ double $>$ \&wzrost, std\+::vector$<$ double $>$ \&wyskok)
 \item 
-void \mbox{\hyperlink{_funkcje_8h_ab31c1b202f5e4d84e3240a056c2a2657}{pobierz\+Indeks}} (std\+::string nazwa\+Pliku, int indeks, int \&indeks\+Maksymalny)
+void \textbf{ pobierz\+Indeks} (std\+::string nazwa\+Pliku, int \&indeks\+Maksymalny)
 \item 
-void \mbox{\hyperlink{_funkcje_8h_ae0b304b461114d113b8e6a66c0751fec}{pobierz\+Drzewo}} (std\+::string nazwa\+Pliku, std\+::map$<$ int, \mbox{\hyperlink{struct_punkt_drzewa_decyzyjnego}{Punkt\+Drzewa\+Decyzyjnego}} $>$ \&Drzewo)
+void \textbf{ pobierz\+Drzewo} (std\+::string nazwa\+Pliku, std\+::map$<$ int, \textbf{ Punkt\+Drzewa\+Decyzyjnego} $>$ \&drzewo, int \&indeks\+Maksymalny)
 \item 
-void \mbox{\hyperlink{_funkcje_8h_a27997a4f7c7c783ba2092ca0bc4faeae}{porownaj}} (std\+::vector$<$ double $>$ \&wzrost, std\+::vector$<$ double $>$ \&wyskok, int indeks, int \&indeks\+Max, std\+::vector$<$ double $>$ \&koszykowka, std\+::vector$<$ double $>$ \&lekkoatletyka, std\+::map$<$ int, \mbox{\hyperlink{struct_punkt_drzewa_decyzyjnego}{Punkt\+Drzewa\+Decyzyjnego}} $>$ \&drzewo)
+void \textbf{ porownaj} (std\+::vector$<$ double $>$ \&wzrost, std\+::vector$<$ double $>$ \&wyskok, int \&indeks\+Maksymalny, std\+::vector$<$ double $>$ \&koszykowka, std\+::vector$<$ double $>$ \&lekkoatletyka, std\+::map$<$ int, \textbf{ Punkt\+Drzewa\+Decyzyjnego} $>$ \&Drzewo\+Decyzyjne)
 \item 
-void \mbox{\hyperlink{_funkcje_8h_aa6faa3b1689968818d866a1ba0e78617}{zapisz\+Do\+Pliku}} (std\+::vector$<$ double $>$ \&koszykowka, std\+::vector$<$ double $>$ \&lekkoatletyka)
+void \textbf{ zapisz\+Do\+Pliku} (std\+::vector$<$ double $>$ \&koszykowka, std\+::vector$<$ double $>$ \&lekkoatletyka)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{_funkcje_8h_a444a0a2bf4afcc8ff7ced3fda3684cb4}\label{_funkcje_8h_a444a0a2bf4afcc8ff7ced3fda3684cb4}} 
+\mbox{\label{_funkcje_8h_a444a0a2bf4afcc8ff7ced3fda3684cb4}} 
 \index{Funkcje.h@{Funkcje.h}!pobierzDane@{pobierzDane}}
 \index{pobierzDane@{pobierzDane}!Funkcje.h@{Funkcje.h}}
-\doxysubsubsection{\texorpdfstring{pobierzDane()}{pobierzDane()}}
+\doxysubsubsection{pobierzDane()}
 {\footnotesize\ttfamily void pobierz\+Dane (\begin{DoxyParamCaption}\item[{std\+::string}]{nazwa\+Pliku,  }\item[{std\+::vector$<$ double $>$ \&}]{wzrost,  }\item[{std\+::vector$<$ double $>$ \&}]{wyskok }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{_funkcje_8h_ae0b304b461114d113b8e6a66c0751fec}\label{_funkcje_8h_ae0b304b461114d113b8e6a66c0751fec}} 
+Funkcja pobiera dane z pliku wejsciowego (wzrost i wyskok) 
+\begin{DoxyParams}{Parameters}
+{\em nazwa\+Pliku} & nazwa pliku wyjsciowego (w formacie .txt) \\
+\hline
+{\em wzrost} & referencja na wektor przechowujacy wzrost osob \\
+\hline
+{\em wyskok} & referencja na wektor przechowujacy wyskok osob \\
+\hline
+\end{DoxyParams}
+\mbox{\label{_funkcje_8h_a670daf8880bc788e437078047b08825b}} 
 \index{Funkcje.h@{Funkcje.h}!pobierzDrzewo@{pobierzDrzewo}}
 \index{pobierzDrzewo@{pobierzDrzewo}!Funkcje.h@{Funkcje.h}}
-\doxysubsubsection{\texorpdfstring{pobierzDrzewo()}{pobierzDrzewo()}}
-{\footnotesize\ttfamily void pobierz\+Drzewo (\begin{DoxyParamCaption}\item[{std\+::string}]{nazwa\+Pliku,  }\item[{std\+::map$<$ int, \mbox{\hyperlink{struct_punkt_drzewa_decyzyjnego}{Punkt\+Drzewa\+Decyzyjnego}} $>$ \&}]{Drzewo }\end{DoxyParamCaption})}
+\doxysubsubsection{pobierzDrzewo()}
+{\footnotesize\ttfamily void pobierz\+Drzewo (\begin{DoxyParamCaption}\item[{std\+::string}]{nazwa\+Pliku,  }\item[{std\+::map$<$ int, \textbf{ Punkt\+Drzewa\+Decyzyjnego} $>$ \&}]{drzewo,  }\item[{int \&}]{indeks\+Maksymalny }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{_funkcje_8h_ab31c1b202f5e4d84e3240a056c2a2657}\label{_funkcje_8h_ab31c1b202f5e4d84e3240a056c2a2657}} 
+Funkcja pobiera dane z pliku drzewa i zapisuje je do mapy 
+\begin{DoxyParams}{Parameters}
+{\em nazwa\+Pliku} & nazwa pliku drzewa (w formacie .txt) \\
+\hline
+{\em drzewo} & referencja na mape drzewa decyzyjnego \\
+\hline
+{\em indeks\+Maksymalny} & referencja do maksymalnego indeksu drzewa \\
+\hline
+\end{DoxyParams}
+\mbox{\label{_funkcje_8h_ade9dd73680a93f0cacaaf7ab5da44529}} 
 \index{Funkcje.h@{Funkcje.h}!pobierzIndeks@{pobierzIndeks}}
 \index{pobierzIndeks@{pobierzIndeks}!Funkcje.h@{Funkcje.h}}
-\doxysubsubsection{\texorpdfstring{pobierzIndeks()}{pobierzIndeks()}}
-{\footnotesize\ttfamily void pobierz\+Indeks (\begin{DoxyParamCaption}\item[{std\+::string}]{nazwa\+Pliku,  }\item[{int}]{indeks,  }\item[{int \&}]{indeks\+Maksymalny }\end{DoxyParamCaption})}
+\doxysubsubsection{pobierzIndeks()}
+{\footnotesize\ttfamily void pobierz\+Indeks (\begin{DoxyParamCaption}\item[{std\+::string}]{nazwa\+Pliku,  }\item[{int \&}]{indeks\+Maksymalny }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{_funkcje_8h_a27997a4f7c7c783ba2092ca0bc4faeae}\label{_funkcje_8h_a27997a4f7c7c783ba2092ca0bc4faeae}} 
+Funkcja pobiera indeks maksymalny w pliku z drzewem 
+\begin{DoxyParams}{Parameters}
+{\em nazwa\+Pliku} & nazwa pliku drzewa (w formacie .txt) \\
+\hline
+{\em indeks\+Maksymalny} & referencja do maksymalnego indeku drzewa \\
+\hline
+\end{DoxyParams}
+\mbox{\label{_funkcje_8h_aaa2269208bd708f970a995364b20dca8}} 
 \index{Funkcje.h@{Funkcje.h}!porownaj@{porownaj}}
 \index{porownaj@{porownaj}!Funkcje.h@{Funkcje.h}}
-\doxysubsubsection{\texorpdfstring{porownaj()}{porownaj()}}
-{\footnotesize\ttfamily void porownaj (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{wzrost,  }\item[{std\+::vector$<$ double $>$ \&}]{wyskok,  }\item[{int}]{indeks,  }\item[{int \&}]{indeks\+Max,  }\item[{std\+::vector$<$ double $>$ \&}]{koszykowka,  }\item[{std\+::vector$<$ double $>$ \&}]{lekkoatletyka,  }\item[{std\+::map$<$ int, \mbox{\hyperlink{struct_punkt_drzewa_decyzyjnego}{Punkt\+Drzewa\+Decyzyjnego}} $>$ \&}]{drzewo }\end{DoxyParamCaption})}
+\doxysubsubsection{porownaj()}
+{\footnotesize\ttfamily void porownaj (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{wzrost,  }\item[{std\+::vector$<$ double $>$ \&}]{wyskok,  }\item[{int \&}]{indeks\+Maksymalny,  }\item[{std\+::vector$<$ double $>$ \&}]{koszykowka,  }\item[{std\+::vector$<$ double $>$ \&}]{lekkoatletyka,  }\item[{std\+::map$<$ int, \textbf{ Punkt\+Drzewa\+Decyzyjnego} $>$ \&}]{Drzewo\+Decyzyjne }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{_funkcje_8h_aa6faa3b1689968818d866a1ba0e78617}\label{_funkcje_8h_aa6faa3b1689968818d866a1ba0e78617}} 
+Funkcja porownuje dane z pliku wejsciowego do drzewa i przypisuje do odpowiednich dyscyplin 
+\begin{DoxyParams}{Parameters}
+{\em wzrost} & referencja na wektor wzrostu \\
+\hline
+{\em wyskok} & referencja na wektor wyskoku \\
+\hline
+{\em indeks\+Maksymalny} & referencja do maksymalnego indeksu drzewa \\
+\hline
+{\em koszykowka} & referencja do wektora przechowywujacego graczy przydzielonych do koszykowki \\
+\hline
+{\em lekkoatletyka} & referencja do wektora przechowywujacego graczy przydzielonych do lekkoatletyki \\
+\hline
+{\em Drzewo\+Decyzyjne} & referencja do mapy drzewa decyzyjnego \\
+\hline
+\end{DoxyParams}
+\mbox{\label{_funkcje_8h_aa6faa3b1689968818d866a1ba0e78617}} 
 \index{Funkcje.h@{Funkcje.h}!zapiszDoPliku@{zapiszDoPliku}}
 \index{zapiszDoPliku@{zapiszDoPliku}!Funkcje.h@{Funkcje.h}}
-\doxysubsubsection{\texorpdfstring{zapiszDoPliku()}{zapiszDoPliku()}}
+\doxysubsubsection{zapiszDoPliku()}
 {\footnotesize\ttfamily void zapisz\+Do\+Pliku (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{koszykowka,  }\item[{std\+::vector$<$ double $>$ \&}]{lekkoatletyka }\end{DoxyParamCaption})}
 
+Funkcja zapisuje wektory z graczami koszykowki i lekkoatletyki do pliku wyjsciowego 
+\begin{DoxyParams}{Parameters}
+{\em koszykowka} & referencja do wektora z graczami koszykowki \\
+\hline
+{\em lekkoatletyka} & referencja do wektora z graczami lekkoatletyki \\
+\hline
+\end{DoxyParams}

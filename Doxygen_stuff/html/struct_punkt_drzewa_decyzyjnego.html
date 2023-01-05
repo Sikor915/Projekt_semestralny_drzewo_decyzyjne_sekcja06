@@ -5,10 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Projekt Semestralny: PunktDrzewaDecyzyjnego Struct Reference</title>
+<title>Drzewo Decyzyjne: PunktDrzewaDecyzyjnego Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -22,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="SUT_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Projekt Semestralny<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">Drzewo Decyzyjne<span id="projectnumber">&#160;2.0</span>
    </div>
-   <div id="projectbrief">Implementacja drzewa decyzyjnego</div>
+   <div id="projectbrief">Implementacja drzewa decyzyjnego przy przydzielaniu graczy do poszczegÃ³lnych dyscyplin</div>
   </td>
  </tr>
  </tbody>
@@ -48,6 +52,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('struct_punkt_drzewa_decyzyjnego.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,7 +90,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
@@ -78,48 +98,133 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_funkcje_8h_source.html">Funkcje.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_struktura_8h_source.html">Struktura.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aa8dbbe68bddfb6e0b4b8b237791b67eb"><td class="memItemLeft" align="right" valign="top"><a id="aa8dbbe68bddfb6e0b4b8b237791b67eb" name="aa8dbbe68bddfb6e0b4b8b237791b67eb"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>atrybut</b></td></tr>
+<tr class="memitem:aa8dbbe68bddfb6e0b4b8b237791b67eb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_punkt_drzewa_decyzyjnego.html#aa8dbbe68bddfb6e0b4b8b237791b67eb">atrybut</a></td></tr>
 <tr class="separator:aa8dbbe68bddfb6e0b4b8b237791b67eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab036694086f15fc90690c046d20b67a2"><td class="memItemLeft" align="right" valign="top"><a id="ab036694086f15fc90690c046d20b67a2" name="ab036694086f15fc90690c046d20b67a2"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>znakTestu</b></td></tr>
+<tr class="memitem:ab036694086f15fc90690c046d20b67a2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_punkt_drzewa_decyzyjnego.html#ab036694086f15fc90690c046d20b67a2">znakTestu</a></td></tr>
 <tr class="separator:ab036694086f15fc90690c046d20b67a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af48bd18074ddd2792004a2110e38d66d"><td class="memItemLeft" align="right" valign="top"><a id="af48bd18074ddd2792004a2110e38d66d" name="af48bd18074ddd2792004a2110e38d66d"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>wymaganie</b> {}</td></tr>
+<tr class="memitem:af48bd18074ddd2792004a2110e38d66d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_punkt_drzewa_decyzyjnego.html#af48bd18074ddd2792004a2110e38d66d">wymaganie</a> {}</td></tr>
 <tr class="separator:af48bd18074ddd2792004a2110e38d66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16e0b9173621407f904904912fc87f2a"><td class="memItemLeft" align="right" valign="top"><a id="a16e0b9173621407f904904912fc87f2a" name="a16e0b9173621407f904904912fc87f2a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>indeks</b> {}</td></tr>
+<tr class="memitem:a16e0b9173621407f904904912fc87f2a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_punkt_drzewa_decyzyjnego.html#a16e0b9173621407f904904912fc87f2a">indeks</a> {}</td></tr>
 <tr class="separator:a16e0b9173621407f904904912fc87f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa0c76b392a925ea2985e2cfe6dcf1a2"><td class="memItemLeft" align="right" valign="top"><a id="aaa0c76b392a925ea2985e2cfe6dcf1a2" name="aaa0c76b392a925ea2985e2cfe6dcf1a2"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>klasyfikacja</b></td></tr>
+<tr class="memitem:aaa0c76b392a925ea2985e2cfe6dcf1a2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_punkt_drzewa_decyzyjnego.html#aaa0c76b392a925ea2985e2cfe6dcf1a2">klasyfikacja</a></td></tr>
 <tr class="separator:aaa0c76b392a925ea2985e2cfe6dcf1a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3339a7d71d2bc39525cf1ffd2172e7bb"><td class="memItemLeft" align="right" valign="top"><a id="a3339a7d71d2bc39525cf1ffd2172e7bb" name="a3339a7d71d2bc39525cf1ffd2172e7bb"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>klasyfikacjaOstateczna</b></td></tr>
+<tr class="memitem:a3339a7d71d2bc39525cf1ffd2172e7bb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_punkt_drzewa_decyzyjnego.html#a3339a7d71d2bc39525cf1ffd2172e7bb">klasyfikacjaOstateczna</a></td></tr>
 <tr class="separator:a3339a7d71d2bc39525cf1ffd2172e7bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >@File Struktura opisuje punkt w drzewie decyzyjnym </p><dl class="params"><dt>Parameters</dt><dd>
+<div class="textblock"><p >Struktura opisuje punkt w drzewie decyzyjnym </p><dl class="section date"><dt>Date</dt><dd>2023-01-05 </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Kacper Sikorski, student Politechniki Slaskiej na I roku Informatyki </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">atrybut</td><td>Nazwa atrybutu do testowania </td></tr>
-    <tr><td class="paramname">znakTestu</td><td>Jaki test ma zostaæ wykonany </td></tr>
-    <tr><td class="paramname">wymaganie</td><td>Wartoœæ graniczna (do której bêdziemy przyrównywaæ) </td></tr>
-    <tr><td class="paramname">indeks</td><td>Indeks nastêpnego punktu drzewa decyzyjnego kiedy test siê nie powiedzie </td></tr>
-    <tr><td class="paramname">klasyfikacja</td><td>Do której dyscypliny zakwalifikowaæ kiedy test siê powiedzie </td></tr>
-    <tr><td class="paramname">klasyfikacjaOstateczna</td><td>Wykorzystane przy ostatnim punkcie drzewa kiedy test siê nie powiedzie </td></tr>
+    <tr><td class="paramname">znakTestu</td><td>Jaki test ma zostac wykonany </td></tr>
+    <tr><td class="paramname">wymaganie</td><td>Wartosc graniczna (do ktorej bedziemy przyrownywac) </td></tr>
+    <tr><td class="paramname">indeks</td><td>Indeks nastepnego punktu drzewa decyzyjnego kiedy test sie nie powiedzie </td></tr>
+    <tr><td class="paramname">klasyfikacja</td><td>Do ktorej dyscypliny zakwalifikowac kiedy test sie powiedzie </td></tr>
+    <tr><td class="paramname">klasyfikacjaOstateczna</td><td>Wykorzystane przy ostatnim punkcie drzewa kiedy test sie nie powiedzie </td></tr>
   </table>
   </dd>
 </dl>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="_funkcje_8h_source.html">Funkcje.h</a></li>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa8dbbe68bddfb6e0b4b8b237791b67eb" name="aa8dbbe68bddfb6e0b4b8b237791b67eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8dbbe68bddfb6e0b4b8b237791b67eb">&#9670;&#160;</a></span>atrybut</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string PunktDrzewaDecyzyjnego::atrybut</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a16e0b9173621407f904904912fc87f2a" name="a16e0b9173621407f904904912fc87f2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16e0b9173621407f904904912fc87f2a">&#9670;&#160;</a></span>indeks</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PunktDrzewaDecyzyjnego::indeks {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa0c76b392a925ea2985e2cfe6dcf1a2" name="aaa0c76b392a925ea2985e2cfe6dcf1a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa0c76b392a925ea2985e2cfe6dcf1a2">&#9670;&#160;</a></span>klasyfikacja</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string PunktDrzewaDecyzyjnego::klasyfikacja</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3339a7d71d2bc39525cf1ffd2172e7bb" name="a3339a7d71d2bc39525cf1ffd2172e7bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3339a7d71d2bc39525cf1ffd2172e7bb">&#9670;&#160;</a></span>klasyfikacjaOstateczna</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string PunktDrzewaDecyzyjnego::klasyfikacjaOstateczna</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af48bd18074ddd2792004a2110e38d66d" name="af48bd18074ddd2792004a2110e38d66d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af48bd18074ddd2792004a2110e38d66d">&#9670;&#160;</a></span>wymaganie</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double PunktDrzewaDecyzyjnego::wymaganie {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab036694086f15fc90690c046d20b67a2" name="ab036694086f15fc90690c046d20b67a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab036694086f15fc90690c046d20b67a2">&#9670;&#160;</a></span>znakTestu</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string PunktDrzewaDecyzyjnego::znakTestu</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="_struktura_8h_source.html">Struktura.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="struct_punkt_drzewa_decyzyjnego.html">PunktDrzewaDecyzyjnego</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+  </ul>
+</div>
 </body>
 </html>
