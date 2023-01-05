@@ -1,5 +1,7 @@
 /** Program przyporzadkowuje osoby o danych atrybutach wzrostu i wyskoku do poszczegolnych dyscyplin sportowych (koszykowka albo lekkoatletyka)
+ * 
  *  @date 2023-01-05
+ * 
  *  @author Kacper Sikorski, student Politechniki Slaskiej na I roku Informatyki
  * 
  *  @todo Czytanie parametrow drzewa decyzyjnego i przechowanie ich. Mozna w sumie uzyc struktury do tego by pozniej bylo latwiej z if-ami moze --- DONE

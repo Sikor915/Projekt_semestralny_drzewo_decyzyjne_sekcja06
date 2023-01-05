@@ -8,8 +8,6 @@
 #include <map>
 
 /** Struktura opisuje punkt w drzewie decyzyjnym
-*   @date 2023-01-05
-*   @author Kacper Sikorski, student Politechniki Slaskiej na I roku Informatyki
 *   @param atrybut Nazwa atrybutu do testowania
 *   @param znakTestu Jaki test ma zostac wykonany
 *   @param wymaganie Wartosc graniczna (do ktorej bedziemy przyrownywac)
