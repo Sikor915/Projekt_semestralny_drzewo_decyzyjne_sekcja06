@@ -37,11 +37,10 @@ int main()
     std::cin >> nazwaPlikuWejsciowego >> nazwaPlikuDrzewa;
     std::cout << std::endl;
 
-    if (nazwaPlikuWejsciowego == "" or nazwaPlikuDrzewa == "")
-    {
-        std::cout << "Wyglada na to ze nie podales nazwy pliku/plikow. Aby program dzialal musi on dostac nazwy dwoch istniejacych i odpowiednio przygotowanych plikow";
-    }
-    else
+    std::ifstream plikWejsciowy(nazwaPlikuWejsciowego);
+    std::ifstream plikDrzewa(nazwaPlikuDrzewa);
+
+    if (plikWejsciowy.is_open() or plikDrzewa.is_open())
     {
         //      <jakie s¹ indeksy, jaka zmienna jest przechowywana>
         std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;
@@ -49,7 +48,7 @@ int main()
         std::vector<double> wyskok;
         std::vector<double> koszykowka, lekkoatletyka;
         int indeksMaksymalny{}, indeksTestowanych{};
-        
+
         pobierzDane(nazwaPlikuWejsciowego, wzrost, wyskok);
 
         pobierzIndeks(nazwaPlikuDrzewa, indeksMaksymalny);
@@ -59,7 +58,14 @@ int main()
         porownaj(wzrost, wyskok, indeksMaksymalny, koszykowka, lekkoatletyka, DrzewoDecyzyjne);
 
         zapiszDoPliku(koszykowka, lekkoatletyka);
-        
+
+        plikWejsciowy.close();
+        plikDrzewa.close();
+    }
+    else
+    {
+        std::cout << "Wyglada na to ze nie podales nazwy pliku/plikow albo podane pliki nie istnieja. Aby program dzialal musi on dostac nazwy dwoch istniejacych i odpowiednio przygotowanych plikow";
+        std::cout << std::endl;
     }
 }
 
