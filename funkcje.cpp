@@ -317,10 +317,10 @@ void porownaj(std::vector<double>& wzrost, std::vector<double>& wyskok, int& ind
     }
 }
 
-void zapiszDoPliku(std::vector<double>& koszykowka, std::vector<double>& lekkoatletyka)
+void zapiszDoPliku(std::vector<double>& koszykowka, std::vector<double>& lekkoatletyka, std::string nazwaPlikuWyjsciowego)
 {
     std::ofstream plikWyjsciowy;
-    plikWyjsciowy.open("plikWyjsciowy.txt");
+    plikWyjsciowy.open(nazwaPlikuWyjsciowego);
 
     if (plikWyjsciowy.is_open())
     {
@@ -350,7 +350,7 @@ void zapiszDoPliku(std::vector<double>& koszykowka, std::vector<double>& lekkoat
             }
         }
         plikWyjsciowy.close();
-        std::cout << "\nWszystkie dane zostaly zapisane w pliku tekstowym o nazwie 'plikWyjsciowy.txt' w folderze z calym kodem." << std::endl;
+        std::cout << "\nWszystkie dane zostaly zapisane w pliku tekstowym o nazwie " << nazwaPlikuWyjsciowego <<   " w folderze z calym kodem." << std::endl;
         std::cout << "Jezeli w pliku nic sie nie wypisalo to oznacza ze plik wejsciowy/drzewa o takiej nazwie nie zostal odnaleziony" << std::endl;
         std::cout << "Pamietaj o tym by wpisac nazwe pliku w taki sposob: 'plikWejsciowy.txt'. Dopisz rozszerzenie" << std::endl;
     }

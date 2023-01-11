@@ -46,9 +46,10 @@ void porownaj(std::vector<double>& wzrost, std::vector<double>& wyskok, int& ind
 /** Funkcja zapisuje wektory z graczami koszykowki i lekkoatletyki do pliku wyjsciowego
  *  @param koszykowka referencja do wektora z graczami koszykowki
  *  @param lekkoatletyka referencja do wektora z graczami lekkoatletyki
+ *  @param nazwaPlikuWyjsciowego zmienna przechowujaca nazwe pliku z koncowym efektem kodu
  */
 
-void zapiszDoPliku(std::vector<double>& koszykowka, std::vector<double>& lekkoatletyka);
+void zapiszDoPliku(std::vector<double>& koszykowka, std::vector<double>& lekkoatletyka, std::string nazwaPlikuWyjsciowego);
 
 
 #endif
