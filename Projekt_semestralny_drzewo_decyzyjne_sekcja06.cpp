@@ -14,6 +14,8 @@
  *
  *  @todo Opisac wszystko z pomoca Doxygena - ogarnac w ogole jak sie to cos robi --- DONE
  * 
+ *  @todo Naprawic porownywanie i zapisywanie do wektorow bo program nie jest uniwersalny :( - zamiast wektorow 'koszykowka' i 'lekkoatletyka' trzeba by uzyc listy wektorow o dlugosci == ilosci klasyfikacji
+ * 
  *  @todo Have fun :)
  *
  */
@@ -25,6 +27,7 @@
 #include <map>
 #include <string>
 #include <filesystem>
+#include <set>
 #include "Funkcje.h"
 
 int main(int argc, char*argv[])
@@ -56,18 +59,18 @@ int main(int argc, char*argv[])
     {
         //      <jakie s¹ indeksy, jaka zmienna jest przechowywana>
         std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;
+        std::map<int, std::vector<std::pair<std::string,double>>> Atrybuty;
         std::vector<std::string> nazwyAtrybutow;
-        std::vector<std::vector<double>> atrybuty;
         std::vector<double> koszykowka, lekkoatletyka;
         int indeksMaksymalny{}, indeksTestowanych{};
 
-        pobierzDane(nazwaPlikuWejsciowego, atrybuty, nazwyAtrybutow);
+        pobierzDane(nazwaPlikuWejsciowego, Atrybuty, nazwyAtrybutow);
 
         pobierzIndeks(nazwaPlikuDrzewa, indeksMaksymalny);
 
         pobierzDrzewo(nazwaPlikuDrzewa, DrzewoDecyzyjne, indeksMaksymalny);
 
-       // porownaj(nazwyAtrybutow, atrybuty, indeksMaksymalny, koszykowka, lekkoatletyka, DrzewoDecyzyjne);
+        funkcja(DrzewoDecyzyjne, Atrybuty, indeksMaksymalny);
 
         zapiszDoPliku(koszykowka, lekkoatletyka, nazwaPlikuWyjsciowego);
 
