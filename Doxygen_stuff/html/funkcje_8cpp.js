@@ -4,5 +4,5 @@ var funkcje_8cpp =
     [ "pobierzDrzewo", "funkcje_8cpp.html#a670daf8880bc788e437078047b08825b", null ],
     [ "pobierzIndeks", "funkcje_8cpp.html#ade9dd73680a93f0cacaaf7ab5da44529", null ],
     [ "porownaj", "funkcje_8cpp.html#aaa2269208bd708f970a995364b20dca8", null ],
-    [ "zapiszDoPliku", "funkcje_8cpp.html#aa6faa3b1689968818d866a1ba0e78617", null ]
+    [ "zapiszDoPliku", "funkcje_8cpp.html#a5a9a407feb082cc7c0a3cb895c148ca3", null ]
 ];

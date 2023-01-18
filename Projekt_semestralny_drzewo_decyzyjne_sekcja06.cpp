@@ -24,6 +24,7 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <filesystem>
 #include "Funkcje.h"
 
 int main(int argc, char*argv[])
@@ -51,7 +52,7 @@ int main(int argc, char*argv[])
     std::ifstream plikWejsciowy(nazwaPlikuWejsciowego);
     std::ifstream plikDrzewa(nazwaPlikuDrzewa);
 
-    if (plikWejsciowy.is_open() or plikDrzewa.is_open())
+    if (plikWejsciowy.good() and plikDrzewa.good())
     {
         //      <jakie s¹ indeksy, jaka zmienna jest przechowywana>
         std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;

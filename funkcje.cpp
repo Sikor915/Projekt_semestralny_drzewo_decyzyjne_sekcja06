@@ -139,14 +139,14 @@ void porownaj(std::vector<double>& wzrost, std::vector<double>& wyskok, int& ind
                             koszykowka.push_back(wzrost.at(indeksTestowanych));
                             koszykowka.push_back(wyskok.at(indeksTestowanych));
                             indeksTestowanych++;
-                            indeks = 2;
+                            indeks = indeksMaksymalny + 1;
                         }
                         else
                         {
                             lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
                             lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
                             indeksTestowanych++;
-                            indeks = 2;
+                            indeks = indeksMaksymalny + 1;
                         }
                     }
                     else
@@ -184,14 +184,14 @@ void porownaj(std::vector<double>& wzrost, std::vector<double>& wyskok, int& ind
                             koszykowka.push_back(wzrost.at(indeksTestowanych));
                             koszykowka.push_back(wyskok.at(indeksTestowanych));
                             indeksTestowanych++;
-                            indeks = 2;
+                            indeks = indeksMaksymalny + 1;
                         }
                         else
                         {
                             lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
                             lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
                             indeksTestowanych++;
-                            indeks = 2;
+                            indeks = indeksMaksymalny + 1;
                         }
                     }
                     else
@@ -232,14 +232,14 @@ void porownaj(std::vector<double>& wzrost, std::vector<double>& wyskok, int& ind
                             koszykowka.push_back(wzrost.at(indeksTestowanych));
                             koszykowka.push_back(wyskok.at(indeksTestowanych));
                             indeksTestowanych++;
-                            indeks = 2;
+                            indeks = indeksMaksymalny + 1;
                         }
                         else
                         {
                             lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
                             lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
                             indeksTestowanych++;
-                            indeks = 2;
+                            indeks = indeksMaksymalny + 1;
                         }
                     }
                     else
@@ -276,14 +276,14 @@ void porownaj(std::vector<double>& wzrost, std::vector<double>& wyskok, int& ind
                             koszykowka.push_back(wzrost.at(indeksTestowanych));
                             koszykowka.push_back(wyskok.at(indeksTestowanych));
                             indeksTestowanych++;
-                            indeks = 2;
+                            indeks = indeksMaksymalny + 1;
                         }
                         else
                         {
                             lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
                             lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
                             indeksTestowanych++;
-                            indeks = 2;
+                            indeks = indeksMaksymalny + 1;
                         }
                     }
                     else

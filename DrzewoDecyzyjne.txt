@@ -1,2 +1,3 @@
-0 wzrost < 190.0 1 koszykowka % root
-1 wyskok > 50.0 koszykowka lekkoatletyka
+0 wzrost > 180.0 1 koszykowka % root
+1 wzrost < 160.0 2 lekkoatletyka
+2 wyskok > 49.2 lekkoatletyka koszykowka

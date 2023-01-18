@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zapiszdopliku_0',['zapiszDoPliku',['../funkcje_8cpp.html#aa6faa3b1689968818d866a1ba0e78617',1,'zapiszDoPliku(std::vector&lt; double &gt; &amp;koszykowka, std::vector&lt; double &gt; &amp;lekkoatletyka):&#160;funkcje.cpp'],['../_funkcje_8h.html#aa6faa3b1689968818d866a1ba0e78617',1,'zapiszDoPliku(std::vector&lt; double &gt; &amp;koszykowka, std::vector&lt; double &gt; &amp;lekkoatletyka):&#160;funkcje.cpp']]]
+  ['zapiszdopliku_0',['zapiszDoPliku',['../funkcje_8cpp.html#a5a9a407feb082cc7c0a3cb895c148ca3',1,'zapiszDoPliku(std::vector&lt; double &gt; &amp;koszykowka, std::vector&lt; double &gt; &amp;lekkoatletyka, std::string nazwaPlikuWyjsciowego):&#160;funkcje.cpp'],['../_funkcje_8h.html#a5a9a407feb082cc7c0a3cb895c148ca3',1,'zapiszDoPliku(std::vector&lt; double &gt; &amp;koszykowka, std::vector&lt; double &gt; &amp;lekkoatletyka, std::string nazwaPlikuWyjsciowego):&#160;funkcje.cpp']]]
 ];

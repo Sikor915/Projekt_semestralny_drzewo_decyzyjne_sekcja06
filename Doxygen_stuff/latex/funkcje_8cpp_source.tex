@@ -1,0 +1,362 @@
+\hypertarget{funkcje_8cpp_source}{}\doxysection{funkcje.\+cpp}
+\mbox{\hyperlink{funkcje_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_funkcje_8h}{Funkcje.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00009}\mbox{\hyperlink{funkcje_8cpp_a444a0a2bf4afcc8ff7ced3fda3684cb4}{00009}} \textcolor{keywordtype}{void} \mbox{\hyperlink{funkcje_8cpp_a444a0a2bf4afcc8ff7ced3fda3684cb4}{pobierzDane}}(std::string nazwaPliku, std::vector<double>\& wzrost, std::vector<double>\& wyskok)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00010}00010 \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00011}00011     std::ifstream plikWejsciowy(nazwaPliku);}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00013}00013     \textcolor{keywordflow}{if} (plikWejsciowy.is\_open())}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00014}00014     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00015}00015         std::string linia;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00016}00016         \textcolor{keywordflow}{while} (std::getline(plikWejsciowy, linia)) \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00017}00017             std::stringstream ss(linia);}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00018}00018             \textcolor{keywordtype}{double} wartosc1, wartosc2;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00019}00019             ss >> wartosc1 >> wartosc2;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00020}00020             \textcolor{keywordflow}{if} (!ss.fail())}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00021}00021             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00022}00022                 wzrost.push\_back(wartosc1);}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00023}00023                 wyskok.push\_back(wartosc2);}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00024}00024             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00025}00025         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00027}00027         plikWejsciowy.close();}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00028}00028     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00029}00029     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00030}00030     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00031}00031         std::cout << \textcolor{stringliteral}{"{}Podany plik nie istnieje!!!"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00032}00032         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00033}00033     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00034}00034 \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00036}\mbox{\hyperlink{funkcje_8cpp_ade9dd73680a93f0cacaaf7ab5da44529}{00036}} \textcolor{keywordtype}{void} \mbox{\hyperlink{funkcje_8cpp_ade9dd73680a93f0cacaaf7ab5da44529}{pobierzIndeks}}(std::string nazwaPliku, \textcolor{keywordtype}{int}\& indeksMaksymalny)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00037}00037 \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00038}00038     std::ifstream wejscie(nazwaPliku);}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00040}00040     \textcolor{keywordflow}{if} (wejscie.is\_open())}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00041}00041     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00042}00042         std::string linia;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00044}00044         \textcolor{keywordflow}{while} (std::getline(wejscie, linia))}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00045}00045         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00046}00046             std::stringstream ss(linia);}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00047}00047             ss >> indeksMaksymalny;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00048}00048         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00050}00050         wejscie.close();}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00051}00051     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00052}00052     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00053}00053     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00054}00054         std::cout << \textcolor{stringliteral}{"{}Podany plik nie istnieje!!!"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00055}00055         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00056}00056     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00057}00057 \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00059}\mbox{\hyperlink{funkcje_8cpp_a670daf8880bc788e437078047b08825b}{00059}} \textcolor{keywordtype}{void} \mbox{\hyperlink{funkcje_8cpp_a670daf8880bc788e437078047b08825b}{pobierzDrzewo}}(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>\& drzewo, \textcolor{keywordtype}{int}\& indeksMaksymalny)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00060}00060 \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00061}00061     \textcolor{keywordtype}{int} indeks\{\};}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00062}00062     std::ifstream wejscie(nazwaPliku);}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00064}00064     \textcolor{keywordflow}{if} (wejscie.is\_open())}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00065}00065     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00066}00066         std::string linia;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00068}00068         \textcolor{keywordflow}{while} (std::getline(wejscie, linia))}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00069}00069         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00070}00070             \textcolor{comment}{// Dopóki mo¿na wczytaæ coœ z pliku Drzewa do s³owa}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00071}00071             \textcolor{keyword}{static} std::string kosz\{\};}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00072}00072             \textcolor{keyword}{static} std::string znakTestu\{\};}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00073}00073             std::stringstream ss(linia);}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00074}00074             ss >> indeks;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00075}00075             \textcolor{keywordflow}{if} (indeks != indeksMaksymalny)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00076}00076             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00077}00077                 std::getline(ss, kosz, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00078}00078                 std::string RzeczDoTestu;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00079}00079                 std::getline(ss, RzeczDoTestu, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00080}00080                 std::getline(ss, znakTestu, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00081}00081                 \textcolor{keywordtype}{double} Test;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00082}00082                 ss >> Test;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00083}00083                 std::getline(ss, kosz, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00084}00084                 \textcolor{keywordtype}{int} kolejnyIndeks;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00085}00085                 ss >> kolejnyIndeks;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00086}00086                 std::getline(ss, kosz, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00087}00087                 std::string Klasyfikacja;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00088}00088                 std::getline(ss, Klasyfikacja, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00090}00090                 \textcolor{comment}{// Dodanie nowego punktu drzewa i zapisanie tego do mapy z indeksem = "{}indeks"{}}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00091}00091                 \mbox{\hyperlink{struct_punkt_drzewa_decyzyjnego}{PunktDrzewaDecyzyjnego}} Punkt\{ RzeczDoTestu, znakTestu, Test ,kolejnyIndeks, Klasyfikacja \};}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00092}00092                 drzewo[indeks] = Punkt;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00093}00093             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00094}00094             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00095}00095             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00096}00096                 \textcolor{comment}{// Tutaj jest zczytywanie dla ostatniego indeksu drzewa}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00097}00097                 std::getline(ss, kosz, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00098}00098                 std::string RzeczDoTestu;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00099}00099                 std::getline(ss, RzeczDoTestu, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00100}00100                 std::getline(ss, znakTestu, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00101}00101                 \textcolor{keywordtype}{double} Test;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00102}00102                 ss >> Test;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00103}00103                 std::getline(ss, kosz, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00104}00104                 std::string KlasyfikacjaNie;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00105}00105                 std::string Klasyfikacja;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00106}00106                 std::getline(ss, KlasyfikacjaNie, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00107}00107                 std::getline(ss, Klasyfikacja, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00108}00108                 \mbox{\hyperlink{struct_punkt_drzewa_decyzyjnego}{PunktDrzewaDecyzyjnego}} Punkt\{ RzeczDoTestu, znakTestu, Test , 0, Klasyfikacja, KlasyfikacjaNie \};}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00109}00109                 drzewo[indeks] = Punkt;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00110}00110             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00112}00112         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00113}00113         wejscie.close();}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00114}00114         indeks = 0;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00115}00115     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00116}00116     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00117}00117     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00118}00118         std::cout << \textcolor{stringliteral}{"{}Podany plik nie istnieje!!!"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00119}00119         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00120}00120     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00121}00121 \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00122}00122 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00123}\mbox{\hyperlink{funkcje_8cpp_aaa2269208bd708f970a995364b20dca8}{00123}} \textcolor{keywordtype}{void} \mbox{\hyperlink{funkcje_8cpp_aaa2269208bd708f970a995364b20dca8}{porownaj}}(std::vector<double>\& wzrost, std::vector<double>\& wyskok, \textcolor{keywordtype}{int}\& indeksMaksymalny,std::vector<double>\& koszykowka, std::vector<double>\& lekkoatletyka, std::map<int, PunktDrzewaDecyzyjnego>\& DrzewoDecyzyjne)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00124}00124 \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00125}00125     \textcolor{keywordtype}{int} indeksTestowanych\{\}, indeks\{\};}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00126}00126     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{double} wartosc : wzrost)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00127}00127     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00128}00128         \textcolor{keywordflow}{while} (indeks <= indeksMaksymalny)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00129}00129         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00130}00130             \textcolor{keywordflow}{if} (DrzewoDecyzyjne[indeks].atrybut == \textcolor{stringliteral}{"{}wzrost"{}})}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00131}00131             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00133}00133                 \textcolor{keywordflow}{if} (DrzewoDecyzyjne[indeks].znakTestu == \textcolor{stringliteral}{"{}<"{}})}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00134}00134                 \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00135}00135                     \textcolor{keywordflow}{if} (wzrost[indeksTestowanych] < DrzewoDecyzyjne[indeks].wymaganie)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00136}00136                     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00137}00137                         \textcolor{keywordflow}{if} (DrzewoDecyzyjne[indeks].klasyfikacja == \textcolor{stringliteral}{"{}koszykowka"{}})}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00138}00138                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00139}00139                             koszykowka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00140}00140                             koszykowka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00141}00141                             indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00142}00142                             indeks = 2;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00143}00143                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00144}00144                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00145}00145                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00146}00146                             lekkoatletyka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00147}00147                             lekkoatletyka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00148}00148                             indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00149}00149                             indeks = 2;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00150}00150                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00151}00151                     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00152}00152                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00153}00153                     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00154}00154                         \textcolor{keywordflow}{if} (indeks == indeksMaksymalny)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00155}00155                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00156}00156                             \textcolor{keywordflow}{if} (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == \textcolor{stringliteral}{"{}lekkoatletyka"{}})}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00157}00157                             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00158}00158                                 lekkoatletyka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00159}00159                                 lekkoatletyka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00160}00160                                 indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00161}00161                                 indeks++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00162}00162                             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00163}00163                             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00164}00164                             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00165}00165                                 koszykowka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00166}00166                                 koszykowka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00167}00167                                 indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00168}00168                                 indeks++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00169}00169                             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00170}00170 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00171}00171                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00172}00172                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00173}00173                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00174}00174                             indeks++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00175}00175                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00176}00176                     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00177}00177                 \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00178}00178                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00179}00179                 \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00180}00180                     \textcolor{keywordflow}{if} (wzrost[indeksTestowanych] > DrzewoDecyzyjne[indeks].wymaganie)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00181}00181                     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00182}00182                         \textcolor{keywordflow}{if} (DrzewoDecyzyjne[indeks].klasyfikacja == \textcolor{stringliteral}{"{}koszykowka"{}})}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00183}00183                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00184}00184                             koszykowka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00185}00185                             koszykowka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00186}00186                             indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00187}00187                             indeks = 2;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00188}00188                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00189}00189                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00190}00190                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00191}00191                             lekkoatletyka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00192}00192                             lekkoatletyka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00193}00193                             indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00194}00194                             indeks = 2;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00195}00195                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00196}00196                     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00197}00197                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00198}00198                     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00199}00199                         \textcolor{keywordflow}{if} (indeks == indeksMaksymalny)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00200}00200                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00201}00201                             \textcolor{keywordflow}{if} (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == \textcolor{stringliteral}{"{}lekkoatletyka"{}})}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00202}00202                             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00203}00203                                 lekkoatletyka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00204}00204                                 lekkoatletyka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00205}00205                                 indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00206}00206                                 indeks++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00207}00207                             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00208}00208                             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00209}00209                             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00210}00210                                 koszykowka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00211}00211                                 koszykowka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00212}00212                                 indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00213}00213                                 indeks++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00214}00214                             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00215}00215                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00216}00216                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00217}00217                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00218}00218                             indeks++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00219}00219                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00220}00220                     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00221}00221                 \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00222}00222 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00223}00223             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00224}00224             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00225}00225             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00226}00226                 \textcolor{keywordflow}{if} (DrzewoDecyzyjne[indeks].znakTestu == \textcolor{stringliteral}{"{}<"{}})}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00227}00227                 \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00228}00228                     \textcolor{keywordflow}{if} (wyskok[indeksTestowanych] < DrzewoDecyzyjne[indeks].wymaganie)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00229}00229                     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00230}00230                         \textcolor{keywordflow}{if} (DrzewoDecyzyjne[indeks].klasyfikacja == \textcolor{stringliteral}{"{}koszykowka"{}})}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00231}00231                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00232}00232                             koszykowka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00233}00233                             koszykowka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00234}00234                             indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00235}00235                             indeks = 2;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00236}00236                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00237}00237                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00238}00238                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00239}00239                             lekkoatletyka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00240}00240                             lekkoatletyka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00241}00241                             indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00242}00242                             indeks = 2;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00243}00243                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00244}00244                     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00245}00245                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00246}00246                     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00247}00247                         \textcolor{keywordflow}{if} (indeks == indeksMaksymalny)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00248}00248                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00249}00249                             \textcolor{keywordflow}{if} (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == \textcolor{stringliteral}{"{}lekkoatletyka"{}})}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00250}00250                             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00251}00251                                 lekkoatletyka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00252}00252                                 lekkoatletyka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00253}00253                                 indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00254}00254                                 indeks++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00255}00255                             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00256}00256                             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00257}00257                             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00258}00258                                 koszykowka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00259}00259                                 koszykowka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00260}00260                                 indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00261}00261                                 indeks++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00262}00262                             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00263}00263                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00264}00264                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00265}00265                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00266}00266                             indeks++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00267}00267                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00268}00268                     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00269}00269                 \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00270}00270                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00271}00271                 \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00272}00272                     \textcolor{keywordflow}{if} (wyskok[indeksTestowanych] > DrzewoDecyzyjne[indeks].wymaganie)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00273}00273                     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00274}00274                         \textcolor{keywordflow}{if} (DrzewoDecyzyjne[indeks].klasyfikacja == \textcolor{stringliteral}{"{}koszykowka"{}})}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00275}00275                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00276}00276                             koszykowka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00277}00277                             koszykowka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00278}00278                             indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00279}00279                             indeks = 2;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00280}00280                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00281}00281                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00282}00282                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00283}00283                             lekkoatletyka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00284}00284                             lekkoatletyka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00285}00285                             indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00286}00286                             indeks = 2;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00287}00287                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00288}00288                     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00289}00289                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00290}00290                     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00291}00291                         \textcolor{keywordflow}{if} (indeks == indeksMaksymalny)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00292}00292                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00293}00293                             \textcolor{keywordflow}{if} (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == \textcolor{stringliteral}{"{}lekkoatletyka"{}})}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00294}00294                             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00295}00295                                 lekkoatletyka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00296}00296                                 lekkoatletyka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00297}00297                                 indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00298}00298                                 indeks++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00299}00299                             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00300}00300                             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00301}00301                             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00302}00302                                 koszykowka.push\_back(wzrost.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00303}00303                                 koszykowka.push\_back(wyskok.at(indeksTestowanych));}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00304}00304                                 indeksTestowanych++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00305}00305                                 indeks++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00306}00306                             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00307}00307                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00308}00308                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00309}00309                         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00310}00310                             indeks++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00311}00311                         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00312}00312                     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00313}00313                 \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00314}00314             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00315}00315         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00316}00316         indeks = 0;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00317}00317     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00318}00318 \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00319}00319 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00320}\mbox{\hyperlink{funkcje_8cpp_a5a9a407feb082cc7c0a3cb895c148ca3}{00320}} \textcolor{keywordtype}{void} \mbox{\hyperlink{funkcje_8cpp_a5a9a407feb082cc7c0a3cb895c148ca3}{zapiszDoPliku}}(std::vector<double>\& koszykowka, std::vector<double>\& lekkoatletyka, std::string nazwaPlikuWyjsciowego)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00321}00321 \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00322}00322     std::ofstream plikWyjsciowy;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00323}00323     plikWyjsciowy.open(nazwaPlikuWyjsciowego);}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00324}00324 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00325}00325     \textcolor{keywordflow}{if} (plikWyjsciowy.is\_open())}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00326}00326     \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00327}00327         plikWyjsciowy << \textcolor{stringliteral}{"{}Koszykowka"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00328}00328         \textcolor{keywordtype}{int} licznik\{\};}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00329}00329 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00330}00330         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{double}\& liczba : koszykowka)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00331}00331         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00332}00332             plikWyjsciowy << liczba << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00333}00333             licznik++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00334}00334             \textcolor{keywordflow}{if} (licznik \% 2 == 0)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00335}00335             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00336}00336                 plikWyjsciowy << std::endl;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00337}00337             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00338}00338         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00339}00339 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00340}00340         plikWyjsciowy << std::endl;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00341}00341         plikWyjsciowy << \textcolor{stringliteral}{"{}Lekkoatletyka"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00342}00342 }
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00343}00343         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{double}\& liczba : lekkoatletyka)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00344}00344         \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00345}00345             plikWyjsciowy << liczba << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00346}00346             licznik++;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00347}00347             \textcolor{keywordflow}{if} (licznik \% 2 == 0)}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00348}00348             \{}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00349}00349                 plikWyjsciowy << std::endl;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00350}00350             \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00351}00351         \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00352}00352         plikWyjsciowy.close();}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00353}00353         std::cout << \textcolor{stringliteral}{"{}\(\backslash\)nWszystkie dane zostaly zapisane w pliku tekstowym o nazwie "{}} << nazwaPlikuWyjsciowego <<   \textcolor{stringliteral}{"{} w folderze z calym kodem."{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00354}00354         std::cout << \textcolor{stringliteral}{"{}Jezeli w pliku nic sie nie wypisalo to oznacza ze plik wejsciowy/drzewa o takiej nazwie nie zostal odnaleziony"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00355}00355         std::cout << \textcolor{stringliteral}{"{}Pamietaj o tym by wpisac nazwe pliku w taki sposob: 'plikWejsciowy.txt'. Dopisz rozszerzenie"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00356}00356     \}}
+\DoxyCodeLine{\Hypertarget{funkcje_8cpp_source_l00357}00357 \}}
+
+\end{DoxyCode}
