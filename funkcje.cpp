@@ -6,24 +6,42 @@
 #include <string>
 #include "Funkcje.h"
 
-void pobierzDane(std::string nazwaPliku, std::vector<double>& wzrost, std::vector<double>& wyskok)
+void pobierzDane(std::string nazwaPliku, std::vector<std::vector<double>>& atrybuty, std::vector<std::string>& nazwyAtrybutow)
 {
     std::ifstream plikWejsciowy(nazwaPliku);
 
     if (plikWejsciowy.is_open())
     {
-        std::string linia;
-        while (std::getline(plikWejsciowy, linia)) {
-            std::stringstream ss(linia);
-            double wartosc1, wartosc2;
-            ss >> wartosc1 >> wartosc2;
-            if (!ss.fail())
+        std::string linia, slowo;
+        std::getline(plikWejsciowy, linia);
+        std::stringstream ss;
+        ss << linia;
+        while (ss >> slowo)
+        {
+            if (slowo == "%")
             {
-                wzrost.push_back(wartosc1);
-                wyskok.push_back(wartosc2);
+                break;
+            }
+            else
+            {
+                nazwyAtrybutow.push_back(slowo);
             }
         }
 
+        while (std::getline(plikWejsciowy, linia))
+        {
+            std::vector<double> atrybutyTemp{};
+            double wartosc{};
+            std::stringstream ss2(linia);
+            
+            for (int i = 0; i < nazwyAtrybutow.size(); i++)
+            {
+               ss2 >> wartosc;
+               atrybutyTemp.push_back(wartosc);
+            }
+            atrybuty.push_back(atrybutyTemp);
+            
+        }
         plikWejsciowy.close();
     }
     else
@@ -120,202 +138,202 @@ void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>
     }
 }
 
-void porownaj(std::vector<double>& wzrost, std::vector<double>& wyskok, int& indeksMaksymalny,std::vector<double>& koszykowka, std::vector<double>& lekkoatletyka, std::map<int, PunktDrzewaDecyzyjnego>& DrzewoDecyzyjne)
-{
-    int indeksTestowanych{}, indeks{};
-    for (double wartosc : wzrost)
-    {
-        while (indeks <= indeksMaksymalny)
-        {
-            if (DrzewoDecyzyjne[indeks].atrybut == "wzrost")
-            {
-
-                if (DrzewoDecyzyjne[indeks].znakTestu == "<")
-                {
-                    if (wzrost[indeksTestowanych] < DrzewoDecyzyjne[indeks].wymaganie)
-                    {
-                        if (DrzewoDecyzyjne[indeks].klasyfikacja == "koszykowka")
-                        {
-                            koszykowka.push_back(wzrost.at(indeksTestowanych));
-                            koszykowka.push_back(wyskok.at(indeksTestowanych));
-                            indeksTestowanych++;
-                            indeks = indeksMaksymalny + 1;
-                        }
-                        else
-                        {
-                            lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
-                            lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
-                            indeksTestowanych++;
-                            indeks = indeksMaksymalny + 1;
-                        }
-                    }
-                    else
-                    {
-                        if (indeks == indeksMaksymalny)
-                        {
-                            if (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == "lekkoatletyka")
-                            {
-                                lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
-                                lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
-                                indeksTestowanych++;
-                                indeks++;
-                            }
-                            else
-                            {
-                                koszykowka.push_back(wzrost.at(indeksTestowanych));
-                                koszykowka.push_back(wyskok.at(indeksTestowanych));
-                                indeksTestowanych++;
-                                indeks++;
-                            }
-
-                        }
-                        else
-                        {
-                            indeks++;
-                        }
-                    }
-                }
-                else
-                {
-                    if (wzrost[indeksTestowanych] > DrzewoDecyzyjne[indeks].wymaganie)
-                    {
-                        if (DrzewoDecyzyjne[indeks].klasyfikacja == "koszykowka")
-                        {
-                            koszykowka.push_back(wzrost.at(indeksTestowanych));
-                            koszykowka.push_back(wyskok.at(indeksTestowanych));
-                            indeksTestowanych++;
-                            indeks = indeksMaksymalny + 1;
-                        }
-                        else
-                        {
-                            lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
-                            lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
-                            indeksTestowanych++;
-                            indeks = indeksMaksymalny + 1;
-                        }
-                    }
-                    else
-                    {
-                        if (indeks == indeksMaksymalny)
-                        {
-                            if (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == "lekkoatletyka")
-                            {
-                                lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
-                                lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
-                                indeksTestowanych++;
-                                indeks++;
-                            }
-                            else
-                            {
-                                koszykowka.push_back(wzrost.at(indeksTestowanych));
-                                koszykowka.push_back(wyskok.at(indeksTestowanych));
-                                indeksTestowanych++;
-                                indeks++;
-                            }
-                        }
-                        else
-                        {
-                            indeks++;
-                        }
-                    }
-                }
-
-            }
-            else
-            {
-                if (DrzewoDecyzyjne[indeks].znakTestu == "<")
-                {
-                    if (wyskok[indeksTestowanych] < DrzewoDecyzyjne[indeks].wymaganie)
-                    {
-                        if (DrzewoDecyzyjne[indeks].klasyfikacja == "koszykowka")
-                        {
-                            koszykowka.push_back(wzrost.at(indeksTestowanych));
-                            koszykowka.push_back(wyskok.at(indeksTestowanych));
-                            indeksTestowanych++;
-                            indeks = indeksMaksymalny + 1;
-                        }
-                        else
-                        {
-                            lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
-                            lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
-                            indeksTestowanych++;
-                            indeks = indeksMaksymalny + 1;
-                        }
-                    }
-                    else
-                    {
-                        if (indeks == indeksMaksymalny)
-                        {
-                            if (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == "lekkoatletyka")
-                            {
-                                lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
-                                lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
-                                indeksTestowanych++;
-                                indeks++;
-                            }
-                            else
-                            {
-                                koszykowka.push_back(wzrost.at(indeksTestowanych));
-                                koszykowka.push_back(wyskok.at(indeksTestowanych));
-                                indeksTestowanych++;
-                                indeks++;
-                            }
-                        }
-                        else
-                        {
-                            indeks++;
-                        }
-                    }
-                }
-                else
-                {
-                    if (wyskok[indeksTestowanych] > DrzewoDecyzyjne[indeks].wymaganie)
-                    {
-                        if (DrzewoDecyzyjne[indeks].klasyfikacja == "koszykowka")
-                        {
-                            koszykowka.push_back(wzrost.at(indeksTestowanych));
-                            koszykowka.push_back(wyskok.at(indeksTestowanych));
-                            indeksTestowanych++;
-                            indeks = indeksMaksymalny + 1;
-                        }
-                        else
-                        {
-                            lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
-                            lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
-                            indeksTestowanych++;
-                            indeks = indeksMaksymalny + 1;
-                        }
-                    }
-                    else
-                    {
-                        if (indeks == indeksMaksymalny)
-                        {
-                            if (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == "lekkoatletyka")
-                            {
-                                lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
-                                lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
-                                indeksTestowanych++;
-                                indeks++;
-                            }
-                            else
-                            {
-                                koszykowka.push_back(wzrost.at(indeksTestowanych));
-                                koszykowka.push_back(wyskok.at(indeksTestowanych));
-                                indeksTestowanych++;
-                                indeks++;
-                            }
-                        }
-                        else
-                        {
-                            indeks++;
-                        }
-                    }
-                }
-            }
-        }
-        indeks = 0;
-    }
-}
+//void porownaj(std::vector<std::string>& nazwyAtrybutow, std::vector<std::vector<double>>& atrybuty, int& indeksMaksymalny,std::vector<double>& koszykowka, std::vector<double>& lekkoatletyka, std::map<int, PunktDrzewaDecyzyjnego>& DrzewoDecyzyjne)
+//{
+//    int indeksTestowanych{}, indeks{};
+//    for (double wartosc : wzrost)
+//    {
+//        while (indeks <= indeksMaksymalny)
+//        {
+//            if (DrzewoDecyzyjne[indeks].atrybut == "wzrost")
+//            {
+//
+//                if (DrzewoDecyzyjne[indeks].znakTestu == "<")
+//                {
+//                    if (wzrost[indeksTestowanych] < DrzewoDecyzyjne[indeks].wymaganie)
+//                    {
+//                        if (DrzewoDecyzyjne[indeks].klasyfikacja == "koszykowka")
+//                        {
+//                            koszykowka.push_back(wzrost.at(indeksTestowanych));
+//                            koszykowka.push_back(wyskok.at(indeksTestowanych));
+//                            indeksTestowanych++;
+//                            indeks = indeksMaksymalny + 1;
+//                        }
+//                        else
+//                        {
+//                            lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+//                            lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+//                            indeksTestowanych++;
+//                            indeks = indeksMaksymalny + 1;
+//                        }
+//                    }
+//                    else
+//                    {
+//                        if (indeks == indeksMaksymalny)
+//                        {
+//                            if (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == "lekkoatletyka")
+//                            {
+//                                lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+//                                lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+//                                indeksTestowanych++;
+//                                indeks++;
+//                            }
+//                            else
+//                            {
+//                                koszykowka.push_back(wzrost.at(indeksTestowanych));
+//                                koszykowka.push_back(wyskok.at(indeksTestowanych));
+//                                indeksTestowanych++;
+//                                indeks++;
+//                            }
+//
+//                        }
+//                        else
+//                        {
+//                            indeks++;
+//                        }
+//                    }
+//                }
+//                else
+//                {
+//                    if (wzrost[indeksTestowanych] > DrzewoDecyzyjne[indeks].wymaganie)
+//                    {
+//                        if (DrzewoDecyzyjne[indeks].klasyfikacja == "koszykowka")
+//                        {
+//                            koszykowka.push_back(wzrost.at(indeksTestowanych));
+//                            koszykowka.push_back(wyskok.at(indeksTestowanych));
+//                            indeksTestowanych++;
+//                            indeks = indeksMaksymalny + 1;
+//                        }
+//                        else
+//                        {
+//                            lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+//                            lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+//                            indeksTestowanych++;
+//                            indeks = indeksMaksymalny + 1;
+//                        }
+//                    }
+//                    else
+//                    {
+//                        if (indeks == indeksMaksymalny)
+//                        {
+//                            if (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == "lekkoatletyka")
+//                            {
+//                                lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+//                                lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+//                                indeksTestowanych++;
+//                                indeks++;
+//                            }
+//                            else
+//                            {
+//                                koszykowka.push_back(wzrost.at(indeksTestowanych));
+//                                koszykowka.push_back(wyskok.at(indeksTestowanych));
+//                                indeksTestowanych++;
+//                                indeks++;
+//                            }
+//                        }
+//                        else
+//                        {
+//                            indeks++;
+//                        }
+//                    }
+//                }
+//
+//            }
+//            else
+//            {
+//                if (DrzewoDecyzyjne[indeks].znakTestu == "<")
+//                {
+//                    if (wyskok[indeksTestowanych] < DrzewoDecyzyjne[indeks].wymaganie)
+//                    {
+//                        if (DrzewoDecyzyjne[indeks].klasyfikacja == "koszykowka")
+//                        {
+//                            koszykowka.push_back(wzrost.at(indeksTestowanych));
+//                            koszykowka.push_back(wyskok.at(indeksTestowanych));
+//                            indeksTestowanych++;
+//                            indeks = indeksMaksymalny + 1;
+//                        }
+//                        else
+//                        {
+//                            lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+//                            lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+//                            indeksTestowanych++;
+//                            indeks = indeksMaksymalny + 1;
+//                        }
+//                    }
+//                    else
+//                    {
+//                        if (indeks == indeksMaksymalny)
+//                        {
+//                            if (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == "lekkoatletyka")
+//                            {
+//                                lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+//                                lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+//                                indeksTestowanych++;
+//                                indeks++;
+//                            }
+//                            else
+//                            {
+//                                koszykowka.push_back(wzrost.at(indeksTestowanych));
+//                                koszykowka.push_back(wyskok.at(indeksTestowanych));
+//                                indeksTestowanych++;
+//                                indeks++;
+//                            }
+//                        }
+//                        else
+//                        {
+//                            indeks++;
+//                        }
+//                    }
+//                }
+//                else
+//                {
+//                    if (wyskok[indeksTestowanych] > DrzewoDecyzyjne[indeks].wymaganie)
+//                    {
+//                        if (DrzewoDecyzyjne[indeks].klasyfikacja == "koszykowka")
+//                        {
+//                            koszykowka.push_back(wzrost.at(indeksTestowanych));
+//                            koszykowka.push_back(wyskok.at(indeksTestowanych));
+//                            indeksTestowanych++;
+//                            indeks = indeksMaksymalny + 1;
+//                        }
+//                        else
+//                        {
+//                            lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+//                            lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+//                            indeksTestowanych++;
+//                            indeks = indeksMaksymalny + 1;
+//                        }
+//                    }
+//                    else
+//                    {
+//                        if (indeks == indeksMaksymalny)
+//                        {
+//                            if (DrzewoDecyzyjne[indeks].klasyfikacjaOstateczna == "lekkoatletyka")
+//                            {
+//                                lekkoatletyka.push_back(wzrost.at(indeksTestowanych));
+//                                lekkoatletyka.push_back(wyskok.at(indeksTestowanych));
+//                                indeksTestowanych++;
+//                                indeks++;
+//                            }
+//                            else
+//                            {
+//                                koszykowka.push_back(wzrost.at(indeksTestowanych));
+//                                koszykowka.push_back(wyskok.at(indeksTestowanych));
+//                                indeksTestowanych++;
+//                                indeks++;
+//                            }
+//                        }
+//                        else
+//                        {
+//                            indeks++;
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        indeks = 0;
+//    }
+//}
 
 void zapiszDoPliku(std::vector<double>& koszykowka, std::vector<double>& lekkoatletyka, std::string nazwaPlikuWyjsciowego)
 {

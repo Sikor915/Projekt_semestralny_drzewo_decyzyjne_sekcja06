@@ -56,18 +56,18 @@ int main(int argc, char*argv[])
     {
         //      <jakie s¹ indeksy, jaka zmienna jest przechowywana>
         std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;
-        std::vector<double> wzrost;
-        std::vector<double> wyskok;
+        std::vector<std::string> nazwyAtrybutow;
+        std::vector<std::vector<double>> atrybuty;
         std::vector<double> koszykowka, lekkoatletyka;
         int indeksMaksymalny{}, indeksTestowanych{};
 
-        pobierzDane(nazwaPlikuWejsciowego, wzrost, wyskok);
+        pobierzDane(nazwaPlikuWejsciowego, atrybuty, nazwyAtrybutow);
 
         pobierzIndeks(nazwaPlikuDrzewa, indeksMaksymalny);
 
         pobierzDrzewo(nazwaPlikuDrzewa, DrzewoDecyzyjne, indeksMaksymalny);
 
-        porownaj(wzrost, wyskok, indeksMaksymalny, koszykowka, lekkoatletyka, DrzewoDecyzyjne);
+       // porownaj(nazwyAtrybutow, atrybuty, indeksMaksymalny, koszykowka, lekkoatletyka, DrzewoDecyzyjne);
 
         zapiszDoPliku(koszykowka, lekkoatletyka, nazwaPlikuWyjsciowego);
 
