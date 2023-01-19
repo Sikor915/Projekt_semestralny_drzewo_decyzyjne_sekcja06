@@ -10,13 +10,15 @@
 
 #include"Struktura.h"
 
+
+
 /** Funkcja pobiera dane z pliku wejsciowego (wzrost i wyskok)
  *  @param nazwaPliku nazwa pliku wyjsciowego (w formacie .txt) 
  *  @param Atrybuty referencja do mapy wektorów przechowujacej atrybuty z pliku wejsciowego
  *  @param nazwyAtrybutow referencja do wektora zawierajacego nazwy atrybutow z pliku wejsciowego
  */
 
-void pobierzDane(std::string nazwaPliku, std::map<int, std::vector<std::pair<std::string, double>>>& Atrybuty, std::vector<std::string>& nazwyAtrybutow);
+void pobierzDane(std::string nazwaPliku, std::vector<std::vector<std::pair<std::string, double>>>& Atrybuty, std::vector<std::string>& nazwyAtrybutow);
 
 /** Funkcja pobiera indeks maksymalny w pliku z drzewem
  *  @param nazwaPliku nazwa pliku drzewa (w formacie .txt)
@@ -31,7 +33,7 @@ void pobierzIndeks(std::string nazwaPliku, int& indeksMaksymalny);
  *  @param indeksMaksymalny referencja do maksymalnego indeksu drzewa
  */
 
-void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>& drzewo, int& indeksMaksymalny);
+void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>& drzewo, int& indeksMaksymalny, std::set<std::string>& nazwyPrzydzielenia);
 
 /**
 
@@ -39,7 +41,7 @@ void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>
 
 */
 
-void funkcja(std::map<int, PunktDrzewaDecyzyjnego>& drzewo, std::map<int, std::vector<std::pair<std::string, double>>>& Atrybuty, int& indeksMax);
+void funkcja(std::map<int, PunktDrzewaDecyzyjnego>& drzewo, std::vector<std::vector<std::pair<std::string, double>>>& Atrybuty, int& indeksMax);
 
 /** Funkcja zapisuje wektory z graczami koszykowki i lekkoatletyki do pliku wyjsciowego
  *  @param koszykowka referencja do wektora z graczami koszykowki
@@ -47,7 +49,7 @@ void funkcja(std::map<int, PunktDrzewaDecyzyjnego>& drzewo, std::map<int, std::v
  *  @param nazwaPlikuWyjsciowego zmienna przechowujaca nazwe pliku z koncowym efektem kodu
  */
 
-void zapiszDoPliku(std::vector<double>& koszykowka, std::vector<double>& lekkoatletyka, std::string nazwaPlikuWyjsciowego);
+//void zapiszDoPliku(std::string nazwaPlikuWyjsciowego);
 
 
 #endif

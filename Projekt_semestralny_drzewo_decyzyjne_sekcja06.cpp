@@ -26,32 +26,12 @@
 #include <vector>
 #include <map>
 #include <string>
-#include <filesystem>
 #include <set>
 #include "Funkcje.h"
 
 int main(int argc, char*argv[])
 {
-    /*
-    std::cout << argc << std::endl;
-    for (int i = 0; i < 7; i++)
-    {
-        std::cout << argv[i] << " ";
-    }
-    std::cout << std::endl;
-    */
-
     std::string nazwaPlikuWejsciowego{ argv[2] }, nazwaPlikuDrzewa{ argv[4] }, nazwaPlikuWyjsciowego{argv[6]};
-
-    /*
-    std::cout << "Program obsluguje i bada przynaleznosc zawodnikow o specyficznych parametrach do poszczegolnych dyscyplin (koszykowka i lekkoatletyka)." << std::endl;
-    std::cout << "Prosze podanie nazwy pliku z danymi razem z rozszerzeniem .txt a potem nazwy pliku drzewa decyzyjnego takze z rozszerzeniem .txt" << std::endl;
-    std::cout << "Prosze sie upewnic ze pliki sa odpowiednio przygotowane tzn. plik z danymi posiada dwie kolumny wzrost i wysokosc (w tej kolejnosci) a drzewo jest opisane w ten sposob" << std::endl;
-    std::cout << "<indeks wejscia> <atrybut> <operator> <wartosc> <indeks wyjscia NIE> <indeks wyjscia TAK>; gdzie operator to znak mniejszy lub wiekszy\n" << std::endl;
-    std::cin >> nazwaPlikuWejsciowego >> nazwaPlikuDrzewa;
-    std::cout << std::endl;
-    */
-
     std::ifstream plikWejsciowy(nazwaPlikuWejsciowego);
     std::ifstream plikDrzewa(nazwaPlikuDrzewa);
 
@@ -59,20 +39,21 @@ int main(int argc, char*argv[])
     {
         //      <jakie s¹ indeksy, jaka zmienna jest przechowywana>
         std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;
-        std::map<int, std::vector<std::pair<std::string,double>>> Atrybuty;
+        //std::map<int, wektorA> Atrybuty;
+        std::vector<std::vector<std::pair<std::string, double>>> Atrybuty;
         std::vector<std::string> nazwyAtrybutow;
-        std::vector<double> koszykowka, lekkoatletyka;
+        std::set<std::string> nazwyPrzydzielenia;
         int indeksMaksymalny{}, indeksTestowanych{};
 
         pobierzDane(nazwaPlikuWejsciowego, Atrybuty, nazwyAtrybutow);
 
         pobierzIndeks(nazwaPlikuDrzewa, indeksMaksymalny);
 
-        pobierzDrzewo(nazwaPlikuDrzewa, DrzewoDecyzyjne, indeksMaksymalny);
+        pobierzDrzewo(nazwaPlikuDrzewa, DrzewoDecyzyjne, indeksMaksymalny, nazwyPrzydzielenia);
 
         funkcja(DrzewoDecyzyjne, Atrybuty, indeksMaksymalny);
 
-        zapiszDoPliku(koszykowka, lekkoatletyka, nazwaPlikuWyjsciowego);
+//        zapiszDoPliku(nazwaPlikuWyjsciowego);
 
         plikWejsciowy.close();
         plikDrzewa.close();
