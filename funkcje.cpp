@@ -7,52 +7,49 @@
 #include <string>
 #include "Funkcje.h"
 
-void pobierzDane(std::string nazwaPliku, std::vector<std::vector<std::pair<std::string, double>>>& Atrybuty, std::vector<std::string>& nazwyAtrybutow)
-{
-    std::ifstream plikWejsciowy(nazwaPliku);
-
-    if (plikWejsciowy.is_open())
-    {
-        int licznik{};
-        std::string linia, slowo;
-        std::getline(plikWejsciowy, linia);
-        std::stringstream ss;
-        ss << linia;
-        while (ss >> slowo)
-        {
-            if (slowo == "%")
-            {
-                break;
-            }
-            else
-            {
-                nazwyAtrybutow.push_back(slowo);
-            }
-        }
-        while (std::getline(plikWejsciowy,linia))
-        {
-            std::pair<std::string, double> paraAtrybutow{};
-            std::vector<std::pair<std::string, double>> wektorAtrybotow{};
-            std::stringstream ss2(linia);
-            double wartosc{};
-            for (int i = 0; i < nazwyAtrybutow.size(); i++)
-            {
-                ss2 >> wartosc;
-                paraAtrybutow.first = nazwyAtrybutow[i];
-                paraAtrybutow.second = wartosc;
-                wektorAtrybotow.push_back(paraAtrybutow);
-            }
-            Atrybuty.push_back(wektorAtrybotow);
-            licznik++;
-        }
-        plikWejsciowy.close();
-    }
-    else
-    {
-        std::cout << "Podany plik nie istnieje!!!" << std::endl;
-        return;
-    }
-}
+//void pobierzDane(std::string nazwaPliku, std::map<int, std::map<std::string, double>>& Atrybuty, std::vector<std::string>& nazwyAtrybutow)
+//{
+//    std::ifstream plikWejsciowy(nazwaPliku);
+//
+//    if (plikWejsciowy.is_open())
+//    {
+//        int licznik{};
+//        std::string linia, slowo;
+//        std::getline(plikWejsciowy, linia);
+//        std::stringstream ss;
+//        ss << linia;
+//        while (ss >> slowo)
+//        {
+//            if (slowo == "%")
+//            {
+//                break;
+//            }
+//            else
+//            {
+//                nazwyAtrybutow.push_back(slowo);
+//            }
+//        }
+//        while (std::getline(plikWejsciowy,linia))
+//        {
+//            std::string nazwa{};
+//            std::stringstream ss2(linia);
+//            double wartosc{};
+//            for (int i = 0; i < nazwyAtrybutow.size(); i++)
+//            {
+//                ss2 >> wartosc;
+//                nazwa = nazwyAtrybutow[i];
+//                Atrybuty[licznik][nazwa] = wartosc;
+//            }
+//            licznik++;
+//        }
+//        plikWejsciowy.close();
+//    }
+//    else
+//    {
+//        std::cout << "Podany plik nie istnieje!!!" << std::endl;
+//        return;
+//    }
+//}
 
 void pobierzIndeks(std::string nazwaPliku, int& indeksMaksymalny)
 {
@@ -144,60 +141,60 @@ void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>
     }
 }
 
-void funkcja(std::map<int, PunktDrzewaDecyzyjnego> drzewo, std::vector<std::vector<std::pair<std::string, double>>> Atrybuty, int& indeksMax)
-{
-    int indeksTestowanych{}, indeks{}, indeksTestowanych1{};
-    for (auto& x : Atrybuty)
-    {
-        while (indeks <= indeksMax)
-        {
-            if (drzewo[indeks].znakTestu == "<")
-            {
-                if (Atrybuty[indeksTestowanych][indeksTestowanych1].first == drzewo[indeks].atrybut)
-                {
-                    if (Atrybuty[indeksTestowanych][indeksTestowanych1].second < drzewo[indeks].wymaganie)
-                    {
-                        //Zapis do odpowiedniego wektora przechowujacego przydzialy
-                        indeksTestowanych1 = 0;
-                        indeksTestowanych++;
-                        indeks = 0;
-                    }
-                    else
-                    {
-                        indeks++;
-                        indeksTestowanych1 = 0;
-                    }
-                }
-                else
-                {
-                    indeksTestowanych1++;
-                }
-            }
-            else
-            {
-                if (Atrybuty[indeksTestowanych][indeksTestowanych1].first == drzewo[indeks].atrybut)
-                {
-                    if (Atrybuty[indeksTestowanych][indeksTestowanych1].second > drzewo[indeks].wymaganie)
-                    {
-                        //Zapis do odpowiedniego wektora przechowujacego przydzialy
-                        indeksTestowanych1 = 0;
-                        indeksTestowanych++;
-                        indeks = 0;
-                    }
-                    else
-                    {
-                        indeks++;
-                        indeksTestowanych1 = 0;
-                    }
-                }
-                else
-                {
-                    indeksTestowanych1++;
-                }
-            }
-        }
-    }
-}
+//void funkcja(std::map<int, PunktDrzewaDecyzyjnego> drzewo, std::map<int, std::map<std::string, double>> Atrybuty, int& indeksMax)
+//{
+//    int indeksTestowanych{}, indeks{}, indeksTestowanych1{};
+//    for (auto& x : Atrybuty)
+//    {
+//        while (indeks <= indeksMax)
+//        {
+//            if (drzewo[indeks].znakTestu == "<")
+//            {
+//                if (Atrybuty[indeksTestowanych][indeksTestowanych1].first == drzewo[indeks].atrybut)
+//                {
+//                    if (Atrybuty[indeksTestowanych][indeksTestowanych1].second < drzewo[indeks].wymaganie)
+//                    {
+//                        //Zapis do odpowiedniego wektora przechowujacego przydzialy
+//                        indeksTestowanych1 = 0;
+//                        indeksTestowanych++;
+//                        indeks = 0;
+//                    }
+//                    else
+//                    {
+//                        indeks++;
+//                        indeksTestowanych1 = 0;
+//                    }
+//                }
+//                else
+//                {
+//                    indeksTestowanych1++;
+//                }
+//            }
+//            else
+//            {
+//                if (Atrybuty[indeksTestowanych][indeksTestowanych1].first == drzewo[indeks].atrybut)
+//                {
+//                    if (Atrybuty[indeksTestowanych][indeksTestowanych1].second > drzewo[indeks].wymaganie)
+//                    {
+//                        //Zapis do odpowiedniego wektora przechowujacego przydzialy
+//                        indeksTestowanych1 = 0;
+//                        indeksTestowanych++;
+//                        indeks = 0;
+//                    }
+//                    else
+//                    {
+//                        indeks++;
+//                        indeksTestowanych1 = 0;
+//                    }
+//                }
+//                else
+//                {
+//                    indeksTestowanych1++;
+//                }
+//            }
+//        }
+//    }
+//}
 
 //void zapiszDoPliku(std::string nazwaPlikuWyjsciowego)
 //{

@@ -38,20 +38,20 @@ int main(int argc, char*argv[])
     if (plikWejsciowy.good() and plikDrzewa.good())
     {
         //      <jakie s¹ indeksy, jaka zmienna jest przechowywana>
-        std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;
+//        std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;
         //std::map<int, wektorA> Atrybuty;
-        std::vector<std::vector<std::pair<std::string, double>>> Atrybuty;
+        //std::map<int, std::map<std::string, double>> Atrybuty;
         std::vector<std::string> nazwyAtrybutow;
         std::set<std::string> nazwyPrzydzielenia;
         int indeksMaksymalny{}, indeksTestowanych{};
 
-        pobierzDane(nazwaPlikuWejsciowego, Atrybuty, nazwyAtrybutow);
+//        pobierzDane(nazwaPlikuWejsciowego, Atrybuty, nazwyAtrybutow);
 
         pobierzIndeks(nazwaPlikuDrzewa, indeksMaksymalny);
 
-        pobierzDrzewo(nazwaPlikuDrzewa, DrzewoDecyzyjne, indeksMaksymalny, nazwyPrzydzielenia);
+//       pobierzDrzewo(nazwaPlikuDrzewa, DrzewoDecyzyjne, indeksMaksymalny, nazwyPrzydzielenia);
 
-        funkcja(DrzewoDecyzyjne, Atrybuty, indeksMaksymalny);
+//        funkcja(DrzewoDecyzyjne, Atrybuty, indeksMaksymalny);
 
 //        zapiszDoPliku(nazwaPlikuWyjsciowego);
 

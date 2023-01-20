@@ -18,7 +18,7 @@
  *  @param nazwyAtrybutow referencja do wektora zawierajacego nazwy atrybutow z pliku wejsciowego
  */
 
-void pobierzDane(std::string nazwaPliku, std::vector<std::vector<std::pair<std::string, double>>>& Atrybuty, std::vector<std::string>& nazwyAtrybutow);
+void pobierzDane(std::string nazwaPliku, std::map<int, std::map<std::string, double>>& Atrybuty, std::vector<std::string>& nazwyAtrybutow);
 
 /** Funkcja pobiera indeks maksymalny w pliku z drzewem
  *  @param nazwaPliku nazwa pliku drzewa (w formacie .txt)
@@ -41,7 +41,7 @@ void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>
 
 */
 
-void funkcja(std::map<int, PunktDrzewaDecyzyjnego>& drzewo, std::vector<std::vector<std::pair<std::string, double>>>& Atrybuty, int& indeksMax);
+void funkcja(std::map<int, PunktDrzewaDecyzyjnego>& drzewo, std::map<int, std::map<std::string, double>>& Atrybuty, int& indeksMax);
 
 /** Funkcja zapisuje wektory z graczami koszykowki i lekkoatletyki do pliku wyjsciowego
  *  @param koszykowka referencja do wektora z graczami koszykowki
