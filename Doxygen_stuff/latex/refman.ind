@@ -1,0 +1,80 @@
+\begin{theindex}
+
+  \item {atrybut}
+    \subitem {PunktDrzewaDecyzyjnego}, 7
+
+  \indexspace
+
+  \item {funkcje.cpp}, 9
+    \subitem {pobierzDane}, 9
+    \subitem {pobierzDrzewo}, 10
+    \subitem {pobierzIndeks}, 10
+    \subitem {porownanie}, 10
+    \subitem {zapiszDoPliku}, 11
+  \item {Funkcje.h}, 11
+    \subitem {pobierzDane}, 12
+    \subitem {pobierzDrzewo}, 12
+    \subitem {pobierzIndeks}, 12
+    \subitem {porownanie}, 13
+    \subitem {zapiszDoPliku}, 13
+
+  \indexspace
+
+  \item {indeks}
+    \subitem {PunktDrzewaDecyzyjnego}, 8
+
+  \indexspace
+
+  \item {klasyfikacja}
+    \subitem {PunktDrzewaDecyzyjnego}, 8
+  \item {klasyfikacjaOstateczna}
+    \subitem {PunktDrzewaDecyzyjnego}, 8
+
+  \indexspace
+
+  \item {main}
+    \subitem {Projekt\_semestralny\_drzewo\_decyzyjne\_sekcja06.cpp}, 
+		14
+
+  \indexspace
+
+  \item {pobierzDane}
+    \subitem {funkcje.cpp}, 9
+    \subitem {Funkcje.h}, 12
+  \item {pobierzDrzewo}
+    \subitem {funkcje.cpp}, 10
+    \subitem {Funkcje.h}, 12
+  \item {pobierzIndeks}
+    \subitem {funkcje.cpp}, 10
+    \subitem {Funkcje.h}, 12
+  \item {porownanie}
+    \subitem {funkcje.cpp}, 10
+    \subitem {Funkcje.h}, 13
+  \item {Projekt\_semestralny\_drzewo\_decyzyjne\_sekcja06.cpp}, 14
+    \subitem {main}, 14
+  \item {PunktDrzewaDecyzyjnego}, 7
+    \subitem {atrybut}, 7
+    \subitem {indeks}, 8
+    \subitem {klasyfikacja}, 8
+    \subitem {klasyfikacjaOstateczna}, 8
+    \subitem {wymaganie}, 8
+    \subitem {znakTestu}, 8
+
+  \indexspace
+
+  \item {Struktura.h}, 15
+
+  \indexspace
+
+  \item {wymaganie}
+    \subitem {PunktDrzewaDecyzyjnego}, 8
+
+  \indexspace
+
+  \item {zapiszDoPliku}
+    \subitem {funkcje.cpp}, 11
+    \subitem {Funkcje.h}, 13
+  \item {znakTestu}
+    \subitem {PunktDrzewaDecyzyjnego}, 8
+
+\end{theindex}

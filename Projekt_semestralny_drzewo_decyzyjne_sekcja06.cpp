@@ -2,7 +2,7 @@
  * 
  *  @date 2023-01-21
  * 
- *  @author Kacper Sikorski, I rok Informatyki, 3 grupa dziekañska, sekcja 06 PPK
+ *  @author Kacper Sikorski, I rok Informatyki, 3 grupa dziekanska, sekcja 06 PPK
  * 
  *  @todo Czytanie parametrow drzewa decyzyjnego i przechowanie ich. Mozna w sumie uzyc struktury do tego by pozniej bylo latwiej z if-ami moze --- DONE
  *  

@@ -1,0 +1,38 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Todo List}{1}{}%
+\contentsline {chapter}{\numberline {2}Class Index}{3}{}%
+\contentsline {section}{\numberline {2.1}Class List}{3}{}%
+\contentsline {chapter}{\numberline {3}File Index}{5}{}%
+\contentsline {section}{\numberline {3.1}File List}{5}{}%
+\contentsline {chapter}{\numberline {4}Class Documentation}{7}{}%
+\contentsline {section}{\numberline {4.1}Punkt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Drzewa\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Decyzyjnego Struct Reference}{7}{}%
+\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{7}{}%
+\contentsline {subsection}{\numberline {4.1.2}Member Data Documentation}{7}{}%
+\contentsline {subsubsection}{\numberline {4.1.2.1}atrybut}{8}{}%
+\contentsline {subsubsection}{\numberline {4.1.2.2}indeks}{8}{}%
+\contentsline {subsubsection}{\numberline {4.1.2.3}klasyfikacja}{8}{}%
+\contentsline {subsubsection}{\numberline {4.1.2.4}klasyfikacjaOstateczna}{8}{}%
+\contentsline {subsubsection}{\numberline {4.1.2.5}wymaganie}{8}{}%
+\contentsline {subsubsection}{\numberline {4.1.2.6}znakTestu}{8}{}%
+\contentsline {chapter}{\numberline {5}File Documentation}{9}{}%
+\contentsline {section}{\numberline {5.1}funkcje.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp File Reference}{9}{}%
+\contentsline {subsection}{\numberline {5.1.1}Function Documentation}{9}{}%
+\contentsline {subsubsection}{\numberline {5.1.1.1}pobierzDane()}{9}{}%
+\contentsline {subsubsection}{\numberline {5.1.1.2}pobierzDrzewo()}{10}{}%
+\contentsline {subsubsection}{\numberline {5.1.1.3}pobierzIndeks()}{10}{}%
+\contentsline {subsubsection}{\numberline {5.1.1.4}porownanie()}{10}{}%
+\contentsline {subsubsection}{\numberline {5.1.1.5}zapiszDoPliku()}{11}{}%
+\contentsline {section}{\numberline {5.2}Funkcje.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h File Reference}{11}{}%
+\contentsline {subsection}{\numberline {5.2.1}Function Documentation}{12}{}%
+\contentsline {subsubsection}{\numberline {5.2.1.1}pobierzDane()}{12}{}%
+\contentsline {subsubsection}{\numberline {5.2.1.2}pobierzDrzewo()}{12}{}%
+\contentsline {subsubsection}{\numberline {5.2.1.3}pobierzIndeks()}{13}{}%
+\contentsline {subsubsection}{\numberline {5.2.1.4}porownanie()}{13}{}%
+\contentsline {subsubsection}{\numberline {5.2.1.5}zapiszDoPliku()}{13}{}%
+\contentsline {section}{\numberline {5.3}Funkcje.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{14}{}%
+\contentsline {section}{\numberline {5.4}Projekt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}semestralny\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}drzewo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}decyzyjne\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}sekcja06.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp File Reference}{14}{}%
+\contentsline {subsection}{\numberline {5.4.1}Function Documentation}{14}{}%
+\contentsline {subsubsection}{\numberline {5.4.1.1}main()}{15}{}%
+\contentsline {section}{\numberline {5.5}Struktura.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h File Reference}{15}{}%
+\contentsline {section}{\numberline {5.6}Struktura.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{16}{}%
+\contentsline {chapter}{Index}{17}{}%

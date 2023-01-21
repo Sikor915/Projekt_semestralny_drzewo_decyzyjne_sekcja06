@@ -12,9 +12,9 @@
 
 
 
-/** Funkcja pobiera dane z pliku wejsciowego (wzrost i wyskok)
+/** Funkcja pobiera dane z pliku wejsciowego 
  *  @param nazwaPliku Nazwa pliku wyjsciowego (w formacie .txt) 
- *  @param atrybuty Referencja do mapy wektorów przechowujacej atrybuty z pliku wejsciowego
+ *  @param atrybuty Referencja do mapy wektorow przechowujacej atrybuty z pliku wejsciowego
  *  @param nazwyAtrybutow Referencja do wektora zawierajacego nazwy atrybutow z pliku wejsciowego
  */
 
@@ -22,7 +22,7 @@ void pobierzDane(std::string nazwaPliku, std::map<int, std::vector<std::pair<std
 
 /** Funkcja pobiera indeks maksymalny w pliku z drzewem
  *  @param nazwaPliku Nazwa pliku drzewa (w formacie .txt)
- *  @param indeksMaksymalny Referencja do maksymalnego indeku drzewa
+ *  @param indeksMaksymalny Referencja do maksymalnego indeksu drzewa
  */
 
 void pobierzIndeks(std::string nazwaPliku, int& indeksMaksymalny);
@@ -45,7 +45,7 @@ void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>
 
 void porownanie(std::map<int, PunktDrzewaDecyzyjnego>& drzewo, std::map<int, std::vector<std::pair<std::string, double>>>& atrybuty, int& indeksMax, std::map<std::string, std::vector<double>>& przydzieleni);
 
-/** Funkcja zapisuje wektory z graczami koszykowki i lekkoatletyki do pliku wyjsciowego
+/** Funkcja zapisuje osoby przydzielone do pliku wyjsciowego
  *  @param nazwaPlikuWyjsciowego Zmienna przechowujaca nazwe pliku z koncowym efektem kodu
  *	@param przydzieleni Mapa z osobami przydzielonymi
  *	@param nazwyPrzydzielenia Set przechowujacy miejsca przydzielenia z drzewa
