@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="SUT_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Drzewo Decyzyjne<span id="projectnumber">&#160;2.0</span>
+   <div id="projectname">Drzewo Decyzyjne<span id="projectnumber">&#160;3.0</span>
    </div>
-   <div id="projectbrief">Implementacja drzewa decyzyjnego przy przydzielaniu graczy do poszczeg√≥lnych dyscyplin</div>
+   <div id="projectbrief">Implementacja drzewa decyzyjnego w C++</div>
   </td>
  </tr>
  </tbody>
@@ -94,82 +94,58 @@ $(document).ready(function(){initNavTree('_projekt__semestralny__drzewo__decyzyj
   <div class="headertitle"><div class="title">Projekt_semestralny_drzewo_decyzyjne_sekcja06.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="_funkcje_8h.html">Funkcje.h</a>&quot;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">   29</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>*argv[])</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">/*</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">    std::cout &lt;&lt; argc &lt;&lt; std::endl;</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">    for (int i = 0; i &lt; 7; i++)</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">    {</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">        std::cout &lt;&lt; argv[i] &lt;&lt; &quot; &quot;;</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">    }</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">    std::cout &lt;&lt; std::endl;</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">    */</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::string nazwaPlikuWejsciowego{ argv[2] }, nazwaPlikuDrzewa{ argv[4] }, nazwaPlikuWyjsciowego{argv[6]};</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">/*</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">    std::cout &lt;&lt; &quot;Program obsluguje i bada przynaleznosc zawodnikow o specyficznych parametrach do poszczegolnych dyscyplin (koszykowka i lekkoatletyka).&quot; &lt;&lt; std::endl;</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">    std::cout &lt;&lt; &quot;Prosze podanie nazwy pliku z danymi razem z rozszerzeniem .txt a potem nazwy pliku drzewa decyzyjnego takze z rozszerzeniem .txt&quot; &lt;&lt; std::endl;</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">    std::cout &lt;&lt; &quot;Prosze sie upewnic ze pliki sa odpowiednio przygotowane tzn. plik z danymi posiada dwie kolumny wzrost i wysokosc (w tej kolejnosci) a drzewo jest opisane w ten sposob&quot; &lt;&lt; std::endl;</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">    std::cout &lt;&lt; &quot;&lt;indeks wejscia&gt; &lt;atrybut&gt; &lt;operator&gt; &lt;wartosc&gt; &lt;indeks wyjscia NIE&gt; &lt;indeks wyjscia TAK&gt;; gdzie operator to znak mniejszy lub wiekszy\n&quot; &lt;&lt; std::endl;</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">    std::cin &gt;&gt; nazwaPlikuWejsciowego &gt;&gt; nazwaPlikuDrzewa;</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">    std::cout &lt;&lt; std::endl;</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">    */</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    std::ifstream plikWejsciowy(nazwaPlikuWejsciowego);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    std::ifstream plikDrzewa(nazwaPlikuDrzewa);</div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;set&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;Funkcje.h&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>*argv[])</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    std::string nazwaPlikuWejsciowego{ argv[2] }, nazwaPlikuDrzewa{ argv[4] }, nazwaPlikuWyjsciowego{argv[6]};</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    std::ifstream plikWejsciowy(nazwaPlikuWejsciowego);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    std::ifstream plikDrzewa(nazwaPlikuDrzewa);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (plikWejsciowy.good() and plikDrzewa.good())</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="comment">//      &lt;jakie sπ indeksy, jaka zmienna jest przechowywana&gt;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        std::map&lt;int, PunktDrzewaDecyzyjnego&gt; drzewoDecyzyjne;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        std::map&lt;int, std::vector&lt;std::pair&lt;std::string, double&gt;&gt;&gt; atrybuty;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        std::vector&lt;std::string&gt; nazwyAtrybutow;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        std::set&lt;std::string&gt; nazwyPrzydzielenia;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        std::map&lt;std::string, std::vector&lt;double&gt;&gt; przydzieleni;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">int</span> indeksMaksymalny{}, indeksTestowanych{};</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        pobierzDane(nazwaPlikuWejsciowego, atrybuty, nazwyAtrybutow);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        pobierzIndeks(nazwaPlikuDrzewa, indeksMaksymalny);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        pobierzDrzewo(nazwaPlikuDrzewa, drzewoDecyzyjne, indeksMaksymalny, nazwyPrzydzielenia);</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">if</span> (plikWejsciowy.is_open() or plikDrzewa.is_open())</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="comment">//      &lt;jakie sπ indeksy, jaka zmienna jest przechowywana&gt;</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        std::map&lt;int, PunktDrzewaDecyzyjnego&gt; DrzewoDecyzyjne;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        std::vector&lt;double&gt; wzrost;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        std::vector&lt;double&gt; wyskok;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        std::vector&lt;double&gt; koszykowka, lekkoatletyka;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordtype">int</span> indeksMaksymalny{}, indeksTestowanych{};</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <a class="code hl_function" href="funkcje_8cpp.html#a444a0a2bf4afcc8ff7ced3fda3684cb4">pobierzDane</a>(nazwaPlikuWejsciowego, wzrost, wyskok);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <a class="code hl_function" href="funkcje_8cpp.html#ade9dd73680a93f0cacaaf7ab5da44529">pobierzIndeks</a>(nazwaPlikuDrzewa, indeksMaksymalny);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <a class="code hl_function" href="funkcje_8cpp.html#a670daf8880bc788e437078047b08825b">pobierzDrzewo</a>(nazwaPlikuDrzewa, DrzewoDecyzyjne, indeksMaksymalny);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_function" href="funkcje_8cpp.html#aaa2269208bd708f970a995364b20dca8">porownaj</a>(wzrost, wyskok, indeksMaksymalny, koszykowka, lekkoatletyka, DrzewoDecyzyjne);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <a class="code hl_function" href="funkcje_8cpp.html#a5a9a407feb082cc7c0a3cb895c148ca3">zapiszDoPliku</a>(koszykowka, lekkoatletyka, nazwaPlikuWyjsciowego);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        plikWejsciowy.close();</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        plikDrzewa.close();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Wyglada na to ze nie podales nazwy pliku/plikow albo podane pliki nie istnieja. Aby program dzialal musi on dostac nazwy dwoch istniejacych i odpowiednio przygotowanych plikow&quot;</span>;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="ttc" id="a_funkcje_8h_html"><div class="ttname"><a href="_funkcje_8h.html">Funkcje.h</a></div></div>
-<div class="ttc" id="a_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source.html#l00029">Projekt_semestralny_drzewo_decyzyjne_sekcja06.cpp:29</a></div></div>
-<div class="ttc" id="afunkcje_8cpp_html_a444a0a2bf4afcc8ff7ced3fda3684cb4"><div class="ttname"><a href="funkcje_8cpp.html#a444a0a2bf4afcc8ff7ced3fda3684cb4">pobierzDane</a></div><div class="ttdeci">void pobierzDane(std::string nazwaPliku, std::vector&lt; double &gt; &amp;wzrost, std::vector&lt; double &gt; &amp;wyskok)</div><div class="ttdef"><b>Definition:</b> <a href="funkcje_8cpp_source.html#l00009">funkcje.cpp:9</a></div></div>
-<div class="ttc" id="afunkcje_8cpp_html_a5a9a407feb082cc7c0a3cb895c148ca3"><div class="ttname"><a href="funkcje_8cpp.html#a5a9a407feb082cc7c0a3cb895c148ca3">zapiszDoPliku</a></div><div class="ttdeci">void zapiszDoPliku(std::vector&lt; double &gt; &amp;koszykowka, std::vector&lt; double &gt; &amp;lekkoatletyka, std::string nazwaPlikuWyjsciowego)</div><div class="ttdef"><b>Definition:</b> <a href="funkcje_8cpp_source.html#l00320">funkcje.cpp:320</a></div></div>
-<div class="ttc" id="afunkcje_8cpp_html_a670daf8880bc788e437078047b08825b"><div class="ttname"><a href="funkcje_8cpp.html#a670daf8880bc788e437078047b08825b">pobierzDrzewo</a></div><div class="ttdeci">void pobierzDrzewo(std::string nazwaPliku, std::map&lt; int, PunktDrzewaDecyzyjnego &gt; &amp;drzewo, int &amp;indeksMaksymalny)</div><div class="ttdef"><b>Definition:</b> <a href="funkcje_8cpp_source.html#l00059">funkcje.cpp:59</a></div></div>
-<div class="ttc" id="afunkcje_8cpp_html_aaa2269208bd708f970a995364b20dca8"><div class="ttname"><a href="funkcje_8cpp.html#aaa2269208bd708f970a995364b20dca8">porownaj</a></div><div class="ttdeci">void porownaj(std::vector&lt; double &gt; &amp;wzrost, std::vector&lt; double &gt; &amp;wyskok, int &amp;indeksMaksymalny, std::vector&lt; double &gt; &amp;koszykowka, std::vector&lt; double &gt; &amp;lekkoatletyka, std::map&lt; int, PunktDrzewaDecyzyjnego &gt; &amp;DrzewoDecyzyjne)</div><div class="ttdef"><b>Definition:</b> <a href="funkcje_8cpp_source.html#l00123">funkcje.cpp:123</a></div></div>
-<div class="ttc" id="afunkcje_8cpp_html_ade9dd73680a93f0cacaaf7ab5da44529"><div class="ttname"><a href="funkcje_8cpp.html#ade9dd73680a93f0cacaaf7ab5da44529">pobierzIndeks</a></div><div class="ttdeci">void pobierzIndeks(std::string nazwaPliku, int &amp;indeksMaksymalny)</div><div class="ttdef"><b>Definition:</b> <a href="funkcje_8cpp_source.html#l00036">funkcje.cpp:36</a></div></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        porownanie(drzewoDecyzyjne, atrybuty, indeksMaksymalny, przydzieleni);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        zapiszDoPliku(nazwaPlikuWyjsciowego, przydzieleni, nazwyPrzydzielenia, nazwyAtrybutow);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        plikWejsciowy.close();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        plikDrzewa.close();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Wyglada na to ze nie podales nazwy pliku/plikow albo podane pliki nie istnieja. Aby program dzialal musi on dostac nazwy dwoch istniejacych i odpowiednio przygotowanych plikow&quot;</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp.html">Projekt_semestralny_drzewo_decyzyjne_sekcja06.cpp</a></li>
+    <li class="navelem"><b>Projekt_semestralny_drzewo_decyzyjne_sekcja06.cpp</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

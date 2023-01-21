@@ -13,43 +13,46 @@
 
 
 /** Funkcja pobiera dane z pliku wejsciowego (wzrost i wyskok)
- *  @param nazwaPliku nazwa pliku wyjsciowego (w formacie .txt) 
- *  @param Atrybuty referencja do mapy wektorów przechowujacej atrybuty z pliku wejsciowego
- *  @param nazwyAtrybutow referencja do wektora zawierajacego nazwy atrybutow z pliku wejsciowego
+ *  @param nazwaPliku Nazwa pliku wyjsciowego (w formacie .txt) 
+ *  @param atrybuty Referencja do mapy wektorów przechowujacej atrybuty z pliku wejsciowego
+ *  @param nazwyAtrybutow Referencja do wektora zawierajacego nazwy atrybutow z pliku wejsciowego
  */
 
-void pobierzDane(std::string nazwaPliku, std::map<int, std::map<std::string, double>>& Atrybuty, std::vector<std::string>& nazwyAtrybutow);
+void pobierzDane(std::string nazwaPliku, std::map<int, std::vector<std::pair<std::string, double>>>& atrybuty, std::vector<std::string>& nazwyAtrybutow);
 
 /** Funkcja pobiera indeks maksymalny w pliku z drzewem
- *  @param nazwaPliku nazwa pliku drzewa (w formacie .txt)
- *  @param indeksMaksymalny referencja do maksymalnego indeku drzewa
+ *  @param nazwaPliku Nazwa pliku drzewa (w formacie .txt)
+ *  @param indeksMaksymalny Referencja do maksymalnego indeku drzewa
  */
 
 void pobierzIndeks(std::string nazwaPliku, int& indeksMaksymalny);
 
 /** Funkcja pobiera dane z pliku drzewa i zapisuje je do mapy
- *  @param nazwaPliku nazwa pliku drzewa (w formacie .txt)
- *  @param drzewo referencja na mape drzewa decyzyjnego
- *  @param indeksMaksymalny referencja do maksymalnego indeksu drzewa
+ *  @param nazwaPliku Nazwa pliku drzewa (w formacie .txt)
+ *  @param drzewo Referencja na mape drzewa decyzyjnego
+ *  @param indeksMaksymalny Referencja do maksymalnego indeksu drzewa
+ *  @param nazwyPrzydzielenia Referencja do setu przechowujacego miejsca przydzielenia w drzewie
  */
 
 void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>& drzewo, int& indeksMaksymalny, std::set<std::string>& nazwyPrzydzielenia);
 
-/**
-
-
-
+/** Funkcja przyrownoje wartosci z pliku wejsciowego do drzewa decyzyjnego i przypisuje wszystkie dane do odpowiednich miejsc
+*	@param drzewo Referencja na mape drzewa decyzyjnego
+*	@param atrybuty Referencja na mape wektorow z atrybutami osob z pliku wejsciowego
+*	@param indeksMax Referencja na zmienna z maksymalnym indeksem drzewa decyzyjnego
+*	@param przydzieleni Referencja na mape przechowujaca przydzielone juz osoby
 */
 
-void funkcja(std::map<int, PunktDrzewaDecyzyjnego>& drzewo, std::map<int, std::map<std::string, double>>& Atrybuty, int& indeksMax);
+void porownanie(std::map<int, PunktDrzewaDecyzyjnego>& drzewo, std::map<int, std::vector<std::pair<std::string, double>>>& atrybuty, int& indeksMax, std::map<std::string, std::vector<double>>& przydzieleni);
 
 /** Funkcja zapisuje wektory z graczami koszykowki i lekkoatletyki do pliku wyjsciowego
- *  @param koszykowka referencja do wektora z graczami koszykowki
- *  @param lekkoatletyka referencja do wektora z graczami lekkoatletyki
- *  @param nazwaPlikuWyjsciowego zmienna przechowujaca nazwe pliku z koncowym efektem kodu
+ *  @param nazwaPlikuWyjsciowego Zmienna przechowujaca nazwe pliku z koncowym efektem kodu
+ *	@param przydzieleni Mapa z osobami przydzielonymi
+ *	@param nazwyPrzydzielenia Set przechowujacy miejsca przydzielenia z drzewa
+ *	@param nazwyAtrybutow Wektor z nazwami atrybutow przedstawionych w pliku wejsciowym
  */
 
-//void zapiszDoPliku(std::string nazwaPlikuWyjsciowego);
+void zapiszDoPliku(std::string nazwaPlikuWyjsciowego, std::map<std::string, std::vector<double>> przydzieleni, std::set<std::string> nazwyPrzydzielenia, std::vector<std::string> nazwyAtrybutow);
 
 
 #endif

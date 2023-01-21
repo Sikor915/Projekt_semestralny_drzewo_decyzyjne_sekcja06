@@ -1,8 +1,8 @@
 var funkcje_8cpp =
 [
-    [ "pobierzDane", "funkcje_8cpp.html#a444a0a2bf4afcc8ff7ced3fda3684cb4", null ],
-    [ "pobierzDrzewo", "funkcje_8cpp.html#a670daf8880bc788e437078047b08825b", null ],
+    [ "pobierzDane", "funkcje_8cpp.html#ac3ce6d6a88c16c8b67cb804b051eeed4", null ],
+    [ "pobierzDrzewo", "funkcje_8cpp.html#ad69f2a4dfb97a1d9438b123e38f12b75", null ],
     [ "pobierzIndeks", "funkcje_8cpp.html#ade9dd73680a93f0cacaaf7ab5da44529", null ],
-    [ "porownaj", "funkcje_8cpp.html#aaa2269208bd708f970a995364b20dca8", null ],
-    [ "zapiszDoPliku", "funkcje_8cpp.html#a5a9a407feb082cc7c0a3cb895c148ca3", null ]
+    [ "porownanie", "funkcje_8cpp.html#a3e8322df06f6a2a15c068d9637531629", null ],
+    [ "zapiszDoPliku", "funkcje_8cpp.html#ac6b4fe2e2b87f491331581ace2af0475", null ]
 ];

@@ -1,3 +1,4 @@
-0 wzrost > 180.0 1 koszykowka % root
-1 wzrost < 160.0 2 lekkoatletyka
-2 wyskok > 49.2 lekkoatletyka koszykowka
+0 wzrost > 185.3 2 dubler % root
+1 BMI < 23 3 aktor  
+2 wiek < 49.2 1 dubler
+3 waga > 90 wrestling sumo

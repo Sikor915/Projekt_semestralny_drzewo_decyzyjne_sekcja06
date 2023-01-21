@@ -1,68 +1,51 @@
-\hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source}{}\doxysection{Projekt\+\_\+semestralny\+\_\+drzewo\+\_\+decyzyjne\+\_\+sekcja06.\+cpp}
-\mbox{\hyperlink{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp}{Go to the documentation of this file.}}
+\doxysection{Projekt\+\_\+semestralny\+\_\+drzewo\+\_\+decyzyjne\+\_\+sekcja06.\+cpp}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00001}00001 }
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00021}00021 \textcolor{preprocessor}{\#include <iostream>}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00022}00022 \textcolor{preprocessor}{\#include <sstream>}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00023}00023 \textcolor{preprocessor}{\#include <fstream>}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00024}00024 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00025}00025 \textcolor{preprocessor}{\#include <map>}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00026}00026 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00027}00027 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_funkcje_8h}{Funkcje.h}}"{}}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00028}00028 }
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00029}\mbox{\hyperlink{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{00029}} \textcolor{keywordtype}{int} \mbox{\hyperlink{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}*argv[])}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00030}00030 \{}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00031}00031     \textcolor{comment}{/*}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00032}00032 \textcolor{comment}{    std::cout << argc << std::endl;}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00033}00033 \textcolor{comment}{    for (int i = 0; i < 7; i++)}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00034}00034 \textcolor{comment}{    \{}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00035}00035 \textcolor{comment}{        std::cout << argv[i] << "{} "{};}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00036}00036 \textcolor{comment}{    \}}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00037}00037 \textcolor{comment}{    std::cout << std::endl;}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00038}00038 \textcolor{comment}{    */}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00039}00039 }
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00040}00040     std::string nazwaPlikuWejsciowego\{ argv[2] \}, nazwaPlikuDrzewa\{ argv[4] \}, nazwaPlikuWyjsciowego\{argv[6]\};}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00041}00041 }
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00042}00042     \textcolor{comment}{/*}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00043}00043 \textcolor{comment}{    std::cout << "{}Program obsluguje i bada przynaleznosc zawodnikow o specyficznych parametrach do poszczegolnych dyscyplin (koszykowka i lekkoatletyka)."{} << std::endl;}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00044}00044 \textcolor{comment}{    std::cout << "{}Prosze podanie nazwy pliku z danymi razem z rozszerzeniem .txt a potem nazwy pliku drzewa decyzyjnego takze z rozszerzeniem .txt"{} << std::endl;}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00045}00045 \textcolor{comment}{    std::cout << "{}Prosze sie upewnic ze pliki sa odpowiednio przygotowane tzn. plik z danymi posiada dwie kolumny wzrost i wysokosc (w tej kolejnosci) a drzewo jest opisane w ten sposob"{} << std::endl;}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00046}00046 \textcolor{comment}{    std::cout << "{}<indeks wejscia> <atrybut> <operator> <wartosc> <indeks wyjscia NIE> <indeks wyjscia TAK>; gdzie operator to znak mniejszy lub wiekszy\(\backslash\)n"{} << std::endl;}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00047}00047 \textcolor{comment}{    std::cin >> nazwaPlikuWejsciowego >> nazwaPlikuDrzewa;}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00048}00048 \textcolor{comment}{    std::cout << std::endl;}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00049}00049 \textcolor{comment}{    */}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00050}00050 }
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00051}00051     std::ifstream plikWejsciowy(nazwaPlikuWejsciowego);}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00052}00052     std::ifstream plikDrzewa(nazwaPlikuDrzewa);}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00053}00053 }
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00054}00054     \textcolor{keywordflow}{if} (plikWejsciowy.is\_open() or plikDrzewa.is\_open())}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00055}00055     \{}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00056}00056         \textcolor{comment}{//      <jakie s¹ indeksy, jaka zmienna jest przechowywana>}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00057}00057         std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00058}00058         std::vector<double> wzrost;}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00059}00059         std::vector<double> wyskok;}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00060}00060         std::vector<double> koszykowka, lekkoatletyka;}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00061}00061         \textcolor{keywordtype}{int} indeksMaksymalny\{\}, indeksTestowanych\{\};}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00062}00062 }
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00063}00063         \mbox{\hyperlink{funkcje_8cpp_a444a0a2bf4afcc8ff7ced3fda3684cb4}{pobierzDane}}(nazwaPlikuWejsciowego, wzrost, wyskok);}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00064}00064 }
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00065}00065         \mbox{\hyperlink{funkcje_8cpp_ade9dd73680a93f0cacaaf7ab5da44529}{pobierzIndeks}}(nazwaPlikuDrzewa, indeksMaksymalny);}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00066}00066 }
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00067}00067         \mbox{\hyperlink{funkcje_8cpp_a670daf8880bc788e437078047b08825b}{pobierzDrzewo}}(nazwaPlikuDrzewa, DrzewoDecyzyjne, indeksMaksymalny);}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00068}00068 }
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00069}00069         \mbox{\hyperlink{funkcje_8cpp_aaa2269208bd708f970a995364b20dca8}{porownaj}}(wzrost, wyskok, indeksMaksymalny, koszykowka, lekkoatletyka, DrzewoDecyzyjne);}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00070}00070 }
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00071}00071         \mbox{\hyperlink{funkcje_8cpp_a5a9a407feb082cc7c0a3cb895c148ca3}{zapiszDoPliku}}(koszykowka, lekkoatletyka, nazwaPlikuWyjsciowego);}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00072}00072 }
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00073}00073         plikWejsciowy.close();}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00074}00074         plikDrzewa.close();}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00075}00075     \}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00076}00076     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00077}00077     \{}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00078}00078         std::cout << \textcolor{stringliteral}{"{}Wyglada na to ze nie podales nazwy pliku/plikow albo podane pliki nie istnieja. Aby program dzialal musi on dostac nazwy dwoch istniejacych i odpowiednio przygotowanych plikow"{}};}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00079}00079         std::cout << std::endl;}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00080}00080     \}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00081}00081 \}}
-\DoxyCodeLine{\Hypertarget{_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source_l00082}00082 }
+\DoxyCodeLine{00001 }
+\DoxyCodeLine{00023 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{00024 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{00025 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{00026 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{00027 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{00028 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{00029 \textcolor{preprocessor}{\#include <set>}}
+\DoxyCodeLine{00030 \textcolor{preprocessor}{\#include "{}Funkcje.h"{}}}
+\DoxyCodeLine{00031 }
+\DoxyCodeLine{00032 \textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}*argv[])}
+\DoxyCodeLine{00033 \{}
+\DoxyCodeLine{00034     std::string nazwaPlikuWejsciowego\{ argv[2] \}, nazwaPlikuDrzewa\{ argv[4] \}, nazwaPlikuWyjsciowego\{argv[6]\};}
+\DoxyCodeLine{00035     std::ifstream plikWejsciowy(nazwaPlikuWejsciowego);}
+\DoxyCodeLine{00036     std::ifstream plikDrzewa(nazwaPlikuDrzewa);}
+\DoxyCodeLine{00037 }
+\DoxyCodeLine{00038     \textcolor{keywordflow}{if} (plikWejsciowy.good() and plikDrzewa.good())}
+\DoxyCodeLine{00039     \{}
+\DoxyCodeLine{00040         \textcolor{comment}{//      <jakie s¹ indeksy, jaka zmienna jest przechowywana>}}
+\DoxyCodeLine{00041         std::map<int, PunktDrzewaDecyzyjnego> drzewoDecyzyjne;}
+\DoxyCodeLine{00042         std::map<int, std::vector<std::pair<std::string, double>>> atrybuty;}
+\DoxyCodeLine{00043         std::vector<std::string> nazwyAtrybutow;}
+\DoxyCodeLine{00044         std::set<std::string> nazwyPrzydzielenia;}
+\DoxyCodeLine{00045         std::map<std::string, std::vector<double>> przydzieleni;}
+\DoxyCodeLine{00046         \textcolor{keywordtype}{int} indeksMaksymalny\{\}, indeksTestowanych\{\};}
+\DoxyCodeLine{00047 }
+\DoxyCodeLine{00048         pobierzDane(nazwaPlikuWejsciowego, atrybuty, nazwyAtrybutow);}
+\DoxyCodeLine{00049 }
+\DoxyCodeLine{00050         pobierzIndeks(nazwaPlikuDrzewa, indeksMaksymalny);}
+\DoxyCodeLine{00051 }
+\DoxyCodeLine{00052         pobierzDrzewo(nazwaPlikuDrzewa, drzewoDecyzyjne, indeksMaksymalny, nazwyPrzydzielenia);}
+\DoxyCodeLine{00053 }
+\DoxyCodeLine{00054         porownanie(drzewoDecyzyjne, atrybuty, indeksMaksymalny, przydzieleni);}
+\DoxyCodeLine{00055 }
+\DoxyCodeLine{00056         zapiszDoPliku(nazwaPlikuWyjsciowego, przydzieleni, nazwyPrzydzielenia, nazwyAtrybutow);}
+\DoxyCodeLine{00057 }
+\DoxyCodeLine{00058         plikWejsciowy.close();}
+\DoxyCodeLine{00059         plikDrzewa.close();}
+\DoxyCodeLine{00060     \}}
+\DoxyCodeLine{00061     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00062     \{}
+\DoxyCodeLine{00063         std::cout << \textcolor{stringliteral}{"{}Wyglada na to ze nie podales nazwy pliku/plikow albo podane pliki nie istnieja. Aby program dzialal musi on dostac nazwy dwoch istniejacych i odpowiednio przygotowanych plikow"{}};}
+\DoxyCodeLine{00064         std::cout << std::endl;}
+\DoxyCodeLine{00065     \}}
+\DoxyCodeLine{00066 \}}
+\DoxyCodeLine{00067 }
 
 \end{DoxyCode}

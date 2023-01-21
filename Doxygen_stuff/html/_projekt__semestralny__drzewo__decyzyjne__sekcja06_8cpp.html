@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="SUT_logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Drzewo Decyzyjne<span id="projectnumber">&#160;2.0</span>
+   <div id="projectname">Drzewo Decyzyjne<span id="projectnumber">&#160;v3.0</span>
    </div>
-   <div id="projectbrief">Implementacja drzewa decyzyjnego przy przydzielaniu graczy do poszczegÃ³lnych dyscyplin</div>
+   <div id="projectbrief">Implementacja drzewa decyzyjnego w C++</div>
   </td>
  </tr>
  </tbody>
@@ -102,10 +102,9 @@ $(document).ready(function(){initNavTree('_projekt__semestralny__drzewo__decyzyj
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;set&gt;</code><br />
 <code>#include &quot;<a class="el" href="_funkcje_8h_source.html">Funkcje.h</a>&quot;</code><br />
-</div>
-<p><a href="_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
@@ -137,17 +136,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Program przyporzadkowuje osoby o danych atrybutach wzrostu i wyskoku do poszczegolnych dyscyplin sportowych (koszykowka albo lekkoatletyka)</p>
-<dl class="section date"><dt>Date</dt><dd>2023-01-05</dd></dl>
+<p >Program jest uniwersalna implementacja drzewa decyzyjnego</p>
+<dl class="section date"><dt>Date</dt><dd>2023-01-21</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Kacper Sikorski, I rok Informatyki, 3 grupa dziekañska, sekcja 06 PPK</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Czytanie parametrow drzewa decyzyjnego i przechowanie ich. Mozna w sumie uzyc struktury do tego by pozniej bylo latwiej z if-ami moze &mdash; DONE</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Porownywanie wartosci do drzewa decyzyjnego - tu by w sumie przydalo sie to parami sprawdzac (tzn. wyskok[0] i wzrost[0]) &mdash; DONE (gownianie ale jest)</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Opracowac jak wywolac ten program z konsoli i wraz z podaniem parametrow (plikow tekstowych) - ja uzywalem cl /EHsc Projekt_semestralny_drzewo_decyzyjne.cpp i potem .\Projekt_semestralny(...) &mdash; DONE?</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Opracowac zeby program podawal instrukcje co jak zrobic gdy uzytkownik nie poda plikow wejsciowych a takze moze niech poda lokalizacje gdzie zapisal plik tekstowy z wynikiem &mdash; DONE</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Opisac wszystko z pomoca Doxygena - ogarnac w ogole jak sie to cos robi &mdash; DONE</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Have fun :)</dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source.html#l00029">29</a> of file <a class="el" href="_projekt__semestralny__drzewo__decyzyjne__sekcja06_8cpp_source.html">Projekt_semestralny_drzewo_decyzyjne_sekcja06.cpp</a>.</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Naprawic porownywanie i zapisywanie do wektorow bo program nie jest uniwersalny :( - zamiast wektorow 'koszykowka' i 'lekkoatletyka' trzeba by uzyc listy wektorow o dlugosci == ilosci klasyfikacji &mdash; DONE</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Have fun :)</dd></dl>
 
 </div>
 </div>

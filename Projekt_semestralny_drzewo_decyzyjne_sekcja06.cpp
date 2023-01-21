@@ -1,6 +1,6 @@
-/** Program przyporzadkowuje osoby o danych atrybutach wzrostu i wyskoku do poszczegolnych dyscyplin sportowych (koszykowka albo lekkoatletyka)
+/** Program jest uniwersalna implementacja drzewa decyzyjnego
  * 
- *  @date 2023-01-05
+ *  @date 2023-01-21
  * 
  *  @author Kacper Sikorski, I rok Informatyki, 3 grupa dziekañska, sekcja 06 PPK
  * 
@@ -14,7 +14,7 @@
  *
  *  @todo Opisac wszystko z pomoca Doxygena - ogarnac w ogole jak sie to cos robi --- DONE
  * 
- *  @todo Naprawic porownywanie i zapisywanie do wektorow bo program nie jest uniwersalny :( - zamiast wektorow 'koszykowka' i 'lekkoatletyka' trzeba by uzyc listy wektorow o dlugosci == ilosci klasyfikacji
+ *  @todo Naprawic porownywanie i zapisywanie do wektorow bo program nie jest uniwersalny :( - zamiast wektorow 'koszykowka' i 'lekkoatletyka' trzeba by uzyc listy wektorow o dlugosci == ilosci klasyfikacji --- DONE
  * 
  *  @todo Have fun :)
  *
@@ -38,22 +38,22 @@ int main(int argc, char*argv[])
     if (plikWejsciowy.good() and plikDrzewa.good())
     {
         //      <jakie s¹ indeksy, jaka zmienna jest przechowywana>
-//        std::map<int, PunktDrzewaDecyzyjnego> DrzewoDecyzyjne;
-        //std::map<int, wektorA> Atrybuty;
-        //std::map<int, std::map<std::string, double>> Atrybuty;
+        std::map<int, PunktDrzewaDecyzyjnego> drzewoDecyzyjne;
+        std::map<int, std::vector<std::pair<std::string, double>>> atrybuty;
         std::vector<std::string> nazwyAtrybutow;
         std::set<std::string> nazwyPrzydzielenia;
+        std::map<std::string, std::vector<double>> przydzieleni;
         int indeksMaksymalny{}, indeksTestowanych{};
 
-//        pobierzDane(nazwaPlikuWejsciowego, Atrybuty, nazwyAtrybutow);
+        pobierzDane(nazwaPlikuWejsciowego, atrybuty, nazwyAtrybutow);
 
         pobierzIndeks(nazwaPlikuDrzewa, indeksMaksymalny);
 
-//       pobierzDrzewo(nazwaPlikuDrzewa, DrzewoDecyzyjne, indeksMaksymalny, nazwyPrzydzielenia);
+        pobierzDrzewo(nazwaPlikuDrzewa, drzewoDecyzyjne, indeksMaksymalny, nazwyPrzydzielenia);
 
-//        funkcja(DrzewoDecyzyjne, Atrybuty, indeksMaksymalny);
+        porownanie(drzewoDecyzyjne, atrybuty, indeksMaksymalny, przydzieleni);
 
-//        zapiszDoPliku(nazwaPlikuWyjsciowego);
+        zapiszDoPliku(nazwaPlikuWyjsciowego, przydzieleni, nazwyPrzydzielenia, nazwyAtrybutow);
 
         plikWejsciowy.close();
         plikDrzewa.close();
