@@ -10,8 +10,6 @@
 
 #include"Struktura.h"
 
-
-
 /** Funkcja pobiera dane z pliku wejsciowego 
  *  @param nazwaPliku Nazwa pliku wyjsciowego (w formacie .txt) 
  *  @param atrybuty Referencja do mapy wektorow przechowujacej atrybuty z pliku wejsciowego
