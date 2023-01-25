@@ -1,0 +1,4 @@
+0 Wiek > 50 1 PracaBiurowa % root
+1 LataDoswiadczenia > 10 2 PracaEkspertow 
+2 IQ < 80 3 Studia
+3 Wiek < 25 PracaMechaniczna Studia
