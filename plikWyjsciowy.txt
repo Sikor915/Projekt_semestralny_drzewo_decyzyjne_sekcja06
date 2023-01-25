@@ -1,14 +1,14 @@
 PracaBiurowa
-   49   107    20 
    61    85    38 
    51    86    15 
    53   108    33 
-   45    85    12 
    54    97     6 
-   48    75    24 
 PracaEkspertow
+   49   107    20 
+   45    85    12 
+   48    75    24 
 PracaMechaniczna
-   24    78     2 
-Studia
    28   109     5 
    39    89     8 
+Studia
+   24    78     2 

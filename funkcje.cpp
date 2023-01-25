@@ -150,8 +150,6 @@ void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>
 void porownanie(std::map<int, PunktDrzewaDecyzyjnego>& drzewo, std::map<int, std::vector<std::pair<std::string, double>>>& atrybuty, int& indeksMax, std::map<std::string, std::vector<double>>& przydzieleni)
 {
     int indeksTestowanych{}, indeks{}, indeksTestowanych1{};
-    std::vector <double> tempVector{};
-    std::vector <double> tempVector2{};
     while(indeksTestowanych < atrybuty.size())
     {
         while (indeks <= indeksMax)
