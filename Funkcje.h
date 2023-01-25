@@ -2,7 +2,6 @@
 #define FUNKCJE_H
 
 #include <vector>
-#include <string>
 #include <fstream>
 #include <sstream>
 #include <map>
@@ -10,13 +9,17 @@
 
 #include"Struktura.h"
 
+typedef std::map<int, PunktDrzewaDecyzyjnego> mapaDrzewa;
+typedef std::vector<std::pair<std::string, double>> wektorParSD;
+typedef std::map<std::string, std::vector<double>> mapaSvD;
+
 /** Funkcja pobiera dane z pliku wejsciowego 
  *  @param nazwaPliku Nazwa pliku wyjsciowego (w formacie .txt) 
  *  @param atrybuty Referencja do mapy wektorow przechowujacej atrybuty z pliku wejsciowego
  *  @param nazwyAtrybutow Referencja do wektora zawierajacego nazwy atrybutow z pliku wejsciowego
  */
 
-void pobierzDane(std::string nazwaPliku, std::map<int, std::vector<std::pair<std::string, double>>>& atrybuty, std::vector<std::string>& nazwyAtrybutow);
+void pobierzDane(std::string nazwaPliku, std::map<int, wektorParSD>& atrybuty, std::vector<std::string>& nazwyAtrybutow);
 
 /** Funkcja pobiera indeks maksymalny w pliku z drzewem
  *  @param nazwaPliku Nazwa pliku drzewa (w formacie .txt)
@@ -32,7 +35,7 @@ void pobierzIndeks(std::string nazwaPliku, int& indeksMaksymalny);
  *  @param nazwyPrzydzielenia Referencja do setu przechowujacego miejsca przydzielenia w drzewie
  */
 
-void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>& drzewo, int& indeksMaksymalny, std::set<std::string>& nazwyPrzydzielenia);
+void pobierzDrzewo(std::string nazwaPliku, mapaDrzewa& drzewo, int& indeksMaksymalny, std::set<std::string>& nazwyPrzydzielenia);
 
 /** Funkcja przyrownoje wartosci z pliku wejsciowego do drzewa decyzyjnego i przypisuje wszystkie dane do odpowiednich miejsc
 *	@param drzewo Referencja na mape drzewa decyzyjnego
@@ -41,7 +44,7 @@ void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>
 *	@param przydzieleni Referencja na mape przechowujaca przydzielone juz osoby
 */
 
-void porownanie(std::map<int, PunktDrzewaDecyzyjnego>& drzewo, std::map<int, std::vector<std::pair<std::string, double>>>& atrybuty, int& indeksMax, std::map<std::string, std::vector<double>>& przydzieleni);
+void porownanie(mapaDrzewa& drzewo, std::map<int, wektorParSD>& atrybuty, int& indeksMax, mapaSvD& przydzieleni);
 
 /** Funkcja zapisuje osoby przydzielone do pliku wyjsciowego
  *  @param nazwaPlikuWyjsciowego Zmienna przechowujaca nazwe pliku z koncowym efektem kodu
@@ -50,7 +53,6 @@ void porownanie(std::map<int, PunktDrzewaDecyzyjnego>& drzewo, std::map<int, std
  *	@param nazwyAtrybutow Wektor z nazwami atrybutow przedstawionych w pliku wejsciowym
  */
 
-void zapiszDoPliku(std::string nazwaPlikuWyjsciowego, std::map<std::string, std::vector<double>> przydzieleni, std::set<std::string> nazwyPrzydzielenia, std::vector<std::string> nazwyAtrybutow);
-
+void zapiszDoPliku(std::string nazwaPlikuWyjsciowego, mapaSvD przydzieleni, std::set<std::string> nazwyPrzydzielenia, std::vector<std::string> nazwyAtrybutow);
 
 #endif

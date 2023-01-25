@@ -29,39 +29,91 @@
 #include <set>
 #include "Funkcje.h"
 
+typedef std::map<int, PunktDrzewaDecyzyjnego> mapaDrzewa;
+typedef std::vector<std::pair<std::string, double>> wektorParSD;
+typedef std::map<std::string, std::vector<double>> mapaSvD;
+
 int main(int argc, char*argv[])
 {
-    std::string nazwaPlikuWejsciowego{ argv[2] }, nazwaPlikuDrzewa{ argv[4] }, nazwaPlikuWyjsciowego{argv[6]};
-    std::ifstream plikWejsciowy(nazwaPlikuWejsciowego);
-    std::ifstream plikDrzewa(nazwaPlikuDrzewa);
-
-    if (plikWejsciowy.good() and plikDrzewa.good())
+    if (argc >= 7)
     {
-        //      <jakie s¹ indeksy, jaka zmienna jest przechowywana>
-        std::map<int, PunktDrzewaDecyzyjnego> drzewoDecyzyjne;
-        std::map<int, std::vector<std::pair<std::string, double>>> atrybuty;
-        std::vector<std::string> nazwyAtrybutow;
-        std::set<std::string> nazwyPrzydzielenia;
-        std::map<std::string, std::vector<double>> przydzieleni;
-        int indeksMaksymalny{}, indeksTestowanych{};
+        std::string arg1{ argv[1] }, arg3{ argv[3] }, arg5{ argv[5] };
+        std::string nazwaPlikuWejsciowego{}, nazwaPlikuDrzewa{}, nazwaPlikuWyjsciowego{};   
+        
+        if (arg1 == "-i")
+        {
+            nazwaPlikuWejsciowego = argv[2];
+        }
+        else if (arg1 == "-t")
+        {
+            nazwaPlikuDrzewa = argv[2];
+        }
+        else if (arg1 == "-o")
+        {
+            nazwaPlikuWyjsciowego = argv[2];
+        }
+        if (arg3 == "-i")
+        {
+            nazwaPlikuWejsciowego = argv[4];
+        }
+        else if (arg3 == "-t")
+        {
+            nazwaPlikuDrzewa = argv[4];
+        }
+        else if (arg3 == "-o")
+        {
+            nazwaPlikuWyjsciowego = argv[4];
+        }
+        if (arg5 == "-i")
+        {
+            nazwaPlikuWejsciowego = argv[6];
+        }
+        else if (arg5 == "-t")
+        {
+            nazwaPlikuDrzewa = argv[6];
+        }
+        else if (arg5 == "-o")
+        {
+            nazwaPlikuWyjsciowego = argv[6];
+        }
+        std::ifstream plikWejsciowy(nazwaPlikuWejsciowego);
+        std::ifstream plikDrzewa(nazwaPlikuDrzewa);
 
-        pobierzDane(nazwaPlikuWejsciowego, atrybuty, nazwyAtrybutow);
+        if (plikWejsciowy.good() and plikDrzewa.good())
+        {
+            mapaDrzewa drzewoDecyzyjne;
+            std::map<int, wektorParSD> atrybuty;
+            std::vector<std::string> nazwyAtrybutow;
+            std::set<std::string> nazwyPrzydzielenia;
+            mapaSvD przydzieleni;
+            int indeksMaksymalny{}, indeksTestowanych{};
 
-        pobierzIndeks(nazwaPlikuDrzewa, indeksMaksymalny);
+            pobierzDane(nazwaPlikuWejsciowego, atrybuty, nazwyAtrybutow);
 
-        pobierzDrzewo(nazwaPlikuDrzewa, drzewoDecyzyjne, indeksMaksymalny, nazwyPrzydzielenia);
+            pobierzIndeks(nazwaPlikuDrzewa, indeksMaksymalny);
 
-        porownanie(drzewoDecyzyjne, atrybuty, indeksMaksymalny, przydzieleni);
+            pobierzDrzewo(nazwaPlikuDrzewa, drzewoDecyzyjne, indeksMaksymalny, nazwyPrzydzielenia);
 
-        zapiszDoPliku(nazwaPlikuWyjsciowego, przydzieleni, nazwyPrzydzielenia, nazwyAtrybutow);
+            porownanie(drzewoDecyzyjne, atrybuty, indeksMaksymalny, przydzieleni);
 
-        plikWejsciowy.close();
-        plikDrzewa.close();
+            zapiszDoPliku(nazwaPlikuWyjsciowego, przydzieleni, nazwyPrzydzielenia, nazwyAtrybutow);
+
+            plikWejsciowy.close();
+            plikDrzewa.close();
+        }
+        else
+        {
+            std::cout << "Wyglada na to ze nie podales nazwy pliku/plikow albo podane pliki nie istnieja. Aby program dzialal musi on dostac nazwy dwoch istniejacych i odpowiednio przygotowanych plikow";
+            std::cout << std::endl;
+        }
     }
     else
     {
-        std::cout << "Wyglada na to ze nie podales nazwy pliku/plikow albo podane pliki nie istnieja. Aby program dzialal musi on dostac nazwy dwoch istniejacych i odpowiednio przygotowanych plikow";
-        std::cout << std::endl;
+        std::cout << "Wyglada na to ze nie zostala podana odpowiednia liczba argumentow programu" << std::endl;
+        std::cout << "Aby program funkcjonowal poprawnie potrzebuje on dostac nastepujace dane:" << std::endl << std::endl;
+        std::cout << "-i 'nazwaPlikuWejsciowego'.txt -t 'nazwaPlikuDrzewa'.txt -o 'nazwaPlikuWyjsciowego'.txt" << std::endl;
+        std::cout << "Prosze upewnic sie, ze przy wlaczaniu programu zostala podana odpowiednia ilosc argumentow i zostaly one odpowiednio przygotowane" << std::endl;
     }
+    
 }
 

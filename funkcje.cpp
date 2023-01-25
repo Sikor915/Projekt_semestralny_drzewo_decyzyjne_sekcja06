@@ -8,7 +8,11 @@
 #include <iomanip>
 #include "Funkcje.h"
 
-void pobierzDane(std::string nazwaPliku, std::map<int, std::vector<std::pair<std::string, double>>>& atrybuty, std::vector<std::string>& nazwyAtrybutow)
+typedef std::map<int, PunktDrzewaDecyzyjnego> mapaDrzewa;
+typedef std::vector<std::pair<std::string, double>> wektorParSD;
+typedef std::map<std::string, std::vector<double>> mapaSvD;
+
+void pobierzDane(std::string nazwaPliku, std::map<int, wektorParSD>& atrybuty, std::vector<std::string>& nazwyAtrybutow)
 {
     std::ifstream plikWejsciowy(nazwaPliku);
 
@@ -80,7 +84,7 @@ void pobierzIndeks(std::string nazwaPliku, int& indeksMaksymalny)
     }
 }
 
-void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>& drzewo, int& indeksMaksymalny, std::set<std::string> & nazwyPrzydzielenia)
+void pobierzDrzewo(std::string nazwaPliku, mapaDrzewa& drzewo, int& indeksMaksymalny, std::set<std::string> & nazwyPrzydzielenia)
 {
     int indeks{};
     std::ifstream wejscie(nazwaPliku);
@@ -91,7 +95,7 @@ void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>
 
         while (std::getline(wejscie, linia))
         {
-            // Dopóki mo¿na wczytaæ coœ z pliku Drzewa do s³owa
+            // Dopóki mo¿na wczytaæ coœ z pliku Drzewa do stringa
             static std::string kosz{};
             static std::string znakTestu{};
             std::stringstream ss(linia);
@@ -147,90 +151,119 @@ void pobierzDrzewo(std::string nazwaPliku, std::map<int, PunktDrzewaDecyzyjnego>
     }
 }
 
-void porownanie(std::map<int, PunktDrzewaDecyzyjnego>& drzewo, std::map<int, std::vector<std::pair<std::string, double>>>& atrybuty, int& indeksMax, std::map<std::string, std::vector<double>>& przydzieleni)
+void porownanie(mapaDrzewa& drzewo, std::map<int, wektorParSD>& atrybuty, int& indeksMax, mapaSvD& przydzieleni)
 {
-    int indeksTestowanych{}, indeks{}, indeksTestowanych1{};
-    while(indeksTestowanych < atrybuty.size())
+    int indeksTestowanych{}, indeks{}, indeksTestowanych1{}, i{};
+    bool czyPasuje = true;
+
+    std::set<std::string> tempSet;
+
+    for (int j = 0; j < drzewo.size(); j++)
     {
-        while (indeks <= indeksMax)
+        tempSet.insert(drzewo[j].atrybut);
+    }
+
+    for (const auto& c : atrybuty)
+    {
+        for (int i = 0; i < c.second.size(); i++)
         {
-            if (indeksTestowanych == atrybuty.size())
+            if (tempSet.count(c.second[i].first) == 0)
             {
-                indeksTestowanych++;
-                break;
-            }
-            if (drzewo[indeks].znakTestu == "<")
-            {
-                if (atrybuty[indeksTestowanych][indeksTestowanych1].first == drzewo[indeks].atrybut)
-                {
-                    if (atrybuty[indeksTestowanych][indeksTestowanych1].second < drzewo[indeks].wymaganie)
-                    {
-                        for (int i = 0; i < atrybuty[indeksTestowanych].size(); i++)
-                        {
-                            przydzieleni[drzewo[indeks].klasyfikacja].push_back(atrybuty[indeksTestowanych][i].second);
-                        }
-                        indeksTestowanych1 = 0;
-                        indeksTestowanych++;
-                        indeks = 0;
-                    }
-                    else
-                    {
-                        if (indeks == indeksMax)
-                        {
-                            for (int i = 0; i < atrybuty[indeksTestowanych].size(); i++)
-                            {
-                                przydzieleni[drzewo[indeks].klasyfikacjaOstateczna].push_back(atrybuty[indeksTestowanych][i].second);
-                            }
-                            indeksTestowanych++;
-                        }
-                        indeks = drzewo[indeks].indeks;
-                        indeksTestowanych1 = 0;
-                    }
-                }
-                else
-                {
-                    indeksTestowanych1++;
-                }
-            }
-            else
-            {
-                if (atrybuty[indeksTestowanych][indeksTestowanych1].first == drzewo[indeks].atrybut)
-                {
-                    if (atrybuty[indeksTestowanych][indeksTestowanych1].second > drzewo[indeks].wymaganie)
-                    {
-                        for (int i = 0; i < atrybuty[indeksTestowanych].size(); i++)
-                        {
-                            przydzieleni[drzewo[indeks].klasyfikacja].push_back(atrybuty[indeksTestowanych][i].second);
-                        }
-                        indeksTestowanych1 = 0;
-                        indeksTestowanych++;
-                        indeks = 0;
-                    }
-                    else
-                    {
-                        if (indeks == indeksMax)
-                        {
-                            for (int i = 0; i < atrybuty[indeksTestowanych].size(); i++)
-                            {
-                                przydzieleni[drzewo[indeks].klasyfikacjaOstateczna].push_back(atrybuty[indeksTestowanych][i].second);
-                            }
-                            indeksTestowanych++;
-                        }
-                        indeks = drzewo[indeks].indeks;
-                        indeksTestowanych1 = 0;
-                    }
-                }
-                else
-                {
-                    indeksTestowanych1++;
-                }
+                czyPasuje = false;
             }
         }
-        indeks = 0;
+        
     }
+
+    if (czyPasuje)
+    {
+        while (indeksTestowanych < atrybuty.size())
+        {
+            while (indeks <= indeksMax)
+            {
+                if (indeksTestowanych == atrybuty.size())
+                {
+                    indeksTestowanych++;
+                    break;
+                }
+                if (drzewo[indeks].znakTestu == "<")
+                {
+                    if (atrybuty[indeksTestowanych][indeksTestowanych1].first == drzewo[indeks].atrybut)
+                    {
+                        if (atrybuty[indeksTestowanych][indeksTestowanych1].second < drzewo[indeks].wymaganie)
+                        {
+                            for (int i = 0; i < atrybuty[indeksTestowanych].size(); i++)
+                            {
+                                przydzieleni[drzewo[indeks].klasyfikacja].push_back(atrybuty[indeksTestowanych][i].second);
+                            }
+                            indeksTestowanych1 = 0;
+                            indeksTestowanych++;
+                            indeks = 0;
+                        }
+                        else
+                        {
+                            if (indeks == indeksMax)
+                            {
+                                for (int i = 0; i < atrybuty[indeksTestowanych].size(); i++)
+                                {
+                                    przydzieleni[drzewo[indeks].klasyfikacjaOstateczna].push_back(atrybuty[indeksTestowanych][i].second);
+                                }
+                                indeksTestowanych++;
+                            }
+                            indeks = drzewo[indeks].indeks;
+                            indeksTestowanych1 = 0;
+                        }
+                    }
+                    else
+                    {
+                        indeksTestowanych1++;
+                    }
+                }
+                else
+                {
+                    if (atrybuty[indeksTestowanych][indeksTestowanych1].first == drzewo[indeks].atrybut)
+                    {
+                        if (atrybuty[indeksTestowanych][indeksTestowanych1].second > drzewo[indeks].wymaganie)
+                        {
+                            for (int i = 0; i < atrybuty[indeksTestowanych].size(); i++)
+                            {
+                                przydzieleni[drzewo[indeks].klasyfikacja].push_back(atrybuty[indeksTestowanych][i].second);
+                            }
+                            indeksTestowanych1 = 0;
+                            indeksTestowanych++;
+                            indeks = 0;
+                        }
+                        else
+                        {
+                            if (indeks == indeksMax)
+                            {
+                                for (int i = 0; i < atrybuty[indeksTestowanych].size(); i++)
+                                {
+                                    przydzieleni[drzewo[indeks].klasyfikacjaOstateczna].push_back(atrybuty[indeksTestowanych][i].second);
+                                }
+                                indeksTestowanych++;
+                            }
+                            indeks = drzewo[indeks].indeks;
+                            indeksTestowanych1 = 0;
+                        }
+                    }
+                    else
+                    {
+                        indeksTestowanych1++;
+                    }
+                }
+            }
+            indeks = 0;
+        }
+    }
+    else
+    {
+        std::cout << "Plik wejsciowy nie pasuje do pliku drzewa!!" << std::endl;
+    }
+    
 }
 
-void zapiszDoPliku(std::string nazwaPlikuWyjsciowego, std::map<std::string, std::vector<double>> przydzieleni, std::set<std::string> nazwyPrzydzielenia, std::vector<std::string> nazwyAtrybutow)
+void zapiszDoPliku(std::string nazwaPlikuWyjsciowego, mapaSvD przydzieleni, std::set<std::string> nazwyPrzydzielenia, std::vector<std::string> nazwyAtrybutow)
 {
     std::ofstream plikWyjsciowy;
     plikWyjsciowy.open(nazwaPlikuWyjsciowego);
@@ -259,5 +292,9 @@ void zapiszDoPliku(std::string nazwaPlikuWyjsciowego, std::map<std::string, std:
         std::cout << "\nWszystkie dane zostaly zapisane w pliku tekstowym o nazwie " << nazwaPlikuWyjsciowego <<   " w folderze z calym kodem." << std::endl;
         std::cout << "Jezeli w pliku nic sie nie wypisalo to oznacza ze plik wejsciowy/drzewa o takiej nazwie nie zostal odnaleziony" << std::endl;
         std::cout << "Pamietaj o tym by wpisac nazwe pliku w taki sposob: 'plikWejsciowy.txt'. Dopisz rozszerzenie" << std::endl;
+    }
+    else
+    {
+        std::cout << "Plik do zapisu nie zostal odnaleziony badz nie istnieje!!!" << std::endl;
     }
 }

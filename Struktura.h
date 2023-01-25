@@ -1,11 +1,7 @@
 #ifndef STRUKTURA_H
 #define STRUKTURA_H
 
-#include <vector>
 #include <string>
-#include <fstream>
-#include <sstream>
-#include <map>
 
 /** Struktura opisuje punkt w drzewie decyzyjnym
 *   @param atrybut Nazwa atrybutu do testowania
