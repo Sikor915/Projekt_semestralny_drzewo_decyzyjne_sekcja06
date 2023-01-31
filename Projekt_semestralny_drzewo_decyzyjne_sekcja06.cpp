@@ -35,7 +35,7 @@ typedef std::map<std::string, std::vector<double>> mapaSvD;
 
 int main(int argc, char*argv[])
 {
-    if (argc >= 7)
+    if (argc == 7)
     {
         std::string arg1{ argv[1] }, arg3{ argv[3] }, arg5{ argv[5] };
         std::string nazwaPlikuWejsciowego{}, nazwaPlikuDrzewa{}, nazwaPlikuWyjsciowego{};   
