@@ -158,21 +158,34 @@ void porownanie(mapaDrzewa& drzewo, std::map<int, wektorParSD>& atrybuty, int& i
 
     std::set<std::string> tempSet;
 
-    for (int j = 0; j < drzewo.size(); j++)
+    //for (int j = 0; j < drzewo.size(); j++)
+    //{
+    //    tempSet.insert(drzewo[j].atrybut);
+    //}
+
+    //for (const auto& c : atrybuty)
+    //{
+    //    for (int i = 0; i < c.second.size(); i++)
+    //    {
+    //        if (tempSet.count(c.second[i].first) == 0)
+    //        {
+    //            czyPasuje = false;
+    //        }
+    //    }
+    //    
+    //}
+    for (int j = 0; j < atrybuty[0].size(); j++)
     {
-        tempSet.insert(drzewo[j].atrybut);
+        tempSet.insert(atrybuty[0][j].first);
     }
 
-    for (const auto& c : atrybuty)
+    for (const auto& c : drzewo)
     {
-        for (int i = 0; i < c.second.size(); i++)
+        if (tempSet.count(c.second.atrybut) == 0)
         {
-            if (tempSet.count(c.second[i].first) == 0)
-            {
-                czyPasuje = false;
-            }
+            czyPasuje = false;
+            break;
         }
-        
     }
 
     if (czyPasuje)
