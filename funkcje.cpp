@@ -96,7 +96,6 @@ void pobierzDrzewo(std::string nazwaPliku, mapaDrzewa& drzewo, int& indeksMaksym
         while (std::getline(wejscie, linia))
         {
             // Dopóki mo¿na wczytaæ coœ z pliku Drzewa do stringa
-            static std::string kosz{};
             static std::string znakTestu{};
             std::stringstream ss(linia);
             ss >> indeks;
@@ -106,14 +105,7 @@ void pobierzDrzewo(std::string nazwaPliku, mapaDrzewa& drzewo, int& indeksMaksym
                 double Test;
                 int kolejnyIndeks;
                 std::string Klasyfikacja;
-                std::getline(ss, kosz, ' ');
-                std::getline(ss, RzeczDoTestu, ' ');
-                std::getline(ss, znakTestu, ' ');
-                ss >> Test;
-                std::getline(ss, kosz, ' ');
-                ss >> kolejnyIndeks;
-                std::getline(ss, kosz, ' ');
-                std::getline(ss, Klasyfikacja, ' ');
+                ss >> RzeczDoTestu >> znakTestu >> Test >> kolejnyIndeks >> Klasyfikacja;
                 nazwyPrzydzielenia.insert(Klasyfikacja);
 
                 // Dodanie nowego punktu drzewa i zapisanie tego do mapy z indeksem = "indeks"
@@ -127,13 +119,8 @@ void pobierzDrzewo(std::string nazwaPliku, mapaDrzewa& drzewo, int& indeksMaksym
                 double Test;
                 std::string KlasyfikacjaNie;
                 std::string Klasyfikacja;
-                std::getline(ss, kosz, ' ');
-                std::getline(ss, RzeczDoTestu, ' ');
-                std::getline(ss, znakTestu, ' ');
-                ss >> Test;
-                std::getline(ss, kosz, ' ');
-                std::getline(ss, KlasyfikacjaNie, ' ');
-                std::getline(ss, Klasyfikacja, ' ');
+
+                ss >> RzeczDoTestu >> znakTestu >> Test >> KlasyfikacjaNie >> Klasyfikacja;
                 nazwyPrzydzielenia.insert(KlasyfikacjaNie);
                 nazwyPrzydzielenia.insert(Klasyfikacja);
 
