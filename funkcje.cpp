@@ -8,9 +8,6 @@
 #include <iomanip>
 #include "Funkcje.h"
 
-typedef std::map<int, PunktDrzewaDecyzyjnego> mapaDrzewa;
-typedef std::vector<std::pair<std::string, double>> wektorParSD;
-typedef std::map<std::string, std::vector<double>> mapaSvD;
 
 void pobierzDane(std::string nazwaPliku, std::map<int, wektorParSD>& atrybuty, std::vector<std::string>& nazwyAtrybutow)
 {
